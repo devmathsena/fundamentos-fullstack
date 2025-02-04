@@ -1,11 +1,15 @@
-# fundamentos-fullstack
+# 🚀 Fundamentos Fullstack
 
-## Sobre:
-Aqui são encontrados resumos de estudos do curso da comunidade OneBitCode, uma formação de Dev Web Javascript Fullstack.
+## 📌 Sobre  
+Este repositório contém **resumos de estudos** do curso de desenvolvimento web **Javascript Fullstack** da comunidade OneBitCode.  
 
-## Objetivo:
-O objetivo deste diretório é poder documentar a trajetório até me tornar dev e ao mesmo tempo, criar uma base de estudos pessoal, mas
-que também poderá ser compartilhada com outras pessoas, podendo auxiliar na trajetória de outros futuros dev's.
+## 🎯 Objetivo  
+Registrar minha jornada rumo a me tornar um **Dev Fullstack**, criando uma base de estudos pessoal que também pode ser útil para outros futuros desenvolvedores.  
 
-## Detalhes:
-Em cada pasta, terá seu assunto de aula e seu resumo, podendo conter códigos efetuados e/ou imagens, além dos textos.
+## 📂 Estrutura  
+📁 Cada pasta representa um tema estudado, contendo:  
+✅ Resumo da aula 📖  
+✅ Códigos desenvolvidos 💻  
+✅ Imagens ilustrativas 🖼️  
+
+> ℹ️ **Obs.:** Os resumos foram otimizados com IA (ChatGPT-4).  
