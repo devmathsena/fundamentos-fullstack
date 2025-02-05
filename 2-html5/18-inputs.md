@@ -1,4 +1,4 @@
-# Guia Completo de Inputs ✨📋
+# Guia Completo de Inputs ✨📝
 
 Os formulários HTML são essenciais para a interação do usuário com páginas da web, permitindo o envio de dados para servidores. Neste artigo, exploramos os principais tipos de inputs e como utilizá-los corretamente. 🚀
 
@@ -56,13 +56,33 @@ Permite selecionar datas facilmente.
 ```
 📆 **Importante:** O formato enviado segue o padrão internacional `YYYY-MM-DD`.
 
-## 7️⃣ Upload de Arquivo 📁
+## 7️⃣ Upload de Arquivo 📎
 Usado para selecionar arquivos do dispositivo.
 ```html
 <label for="foto">Foto de Perfil:</label>
 <input type="file" id="foto" name="avatar">
 ```
-🖼 **Dica:** No backend, é necessário configurar o recebimento e armazenamento do arquivo.
+🎨 **Dica:** No backend, é necessário configurar o recebimento e armazenamento do arquivo.
+
+## 8️⃣ Select (Caixa de Seleção) 🛠️
+Permite escolher uma opção dentro de uma lista suspensa.
+```html
+<label for="linguagem">Linguagem de Programação:</label>
+<select id="linguagem" name="linguagem">
+  <option value="javascript">JavaScript</option>
+  <option value="python">Python</option>
+  <option value="java">Java</option>
+</select>
+```
+🎡 **Dica:** Use `selected` para definir uma opção padrão.
+
+## 9️⃣ Textarea (Caixa de Texto Grande) 🔍
+Útil para inserção de textos mais longos, como descrições ou comentários.
+```html
+<label for="mensagem">Mensagem:</label>
+<textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea>
+```
+🔗 **Dica:** Use `rows` e `cols` para definir o tamanho da caixa de texto.
 
 ## Conclusão 🎯
 Esses são os inputs mais utilizados no HTML para coletar informações dos usuários. Cada um possui características específicas que ajudam na experiência do usuário e na validação dos dados. Com o conhecimento desses elementos, você poderá criar formulários mais completos e funcionais! 🚀💡
