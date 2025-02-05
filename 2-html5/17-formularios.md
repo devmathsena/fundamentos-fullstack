@@ -49,7 +49,7 @@ Podemos associar um **label** ao campo de entrada usando o atributo `for`:
 <label for="email">Digite seu e-mail:</label>
 <input type="email" id="email" name="email">
 ```
-⚠️ Observação: O atributo `for` deve ser preenchido com o id do input.
+> ℹ️ **Obs.:** O atributo `for` deve ser preenchido com o `id` do input.
 
 Dessa forma, ao clicar no texto "Digite seu e-mail", o campo de entrada é ativado automaticamente!
 
