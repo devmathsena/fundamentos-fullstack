@@ -49,6 +49,7 @@ Podemos associar um **label** ao campo de entrada usando o atributo `for`:
 <label for="email">Digite seu e-mail:</label>
 <input type="email" id="email" name="email">
 ```
+⚠️ Observação: O atributo `for` deve ser preenchido com o id do input.
 
 Dessa forma, ao clicar no texto "Digite seu e-mail", o campo de entrada é ativado automaticamente!
 
@@ -56,4 +57,3 @@ Dessa forma, ao clicar no texto "Digite seu e-mail", o campo de entrada é ativa
 Os formulários são uma parte essencial do HTML, permitindo que os usuários interajam e enviem dados. Eles são amplamente usados para **pesquisas, cadastros, logins, comentários** e muito mais!
 
 Nas próximas aulas, exploraremos com mais detalhes os diferentes tipos de campos e como personalizá-los. 🚀
-
