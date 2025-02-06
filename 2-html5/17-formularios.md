@@ -56,4 +56,4 @@ Dessa forma, ao clicar no texto "Digite seu e-mail", o campo de entrada é ativa
 ## 📌 Conclusão
 Os formulários são uma parte essencial do HTML, permitindo que os usuários interajam e enviem dados. Eles são amplamente usados para **pesquisas, cadastros, logins, comentários** e muito mais!
 
-Nas próximas aulas, exploraremos com mais detalhes os diferentes tipos de campos e como personalizá-los. 🚀
+Nas próximas etapas, exploraremos com mais detalhes os diferentes tipos de campos e como personalizá-los. 🚀
