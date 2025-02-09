@@ -1,0 +1,17 @@
+li {
+    color: #ffffff;
+    background-color: #222222;
+    display: inline-block;
+    height: 200px;
+    margin: 15px;
+    padding: 15px;
+}
+
+.selected {
+    background-color: #353535;
+    border: 4px solid #3ba3cc;
+}
+
+.hidden {
+    display: none;
+}
