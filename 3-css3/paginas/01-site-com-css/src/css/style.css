@@ -1,0 +1,24 @@
+body{
+    background-image: url(../img/bg1.jpg);
+    background-size: cover;
+}
+
+header {
+    background-color: #248030;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+section {
+    background-color: #ffff8c;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #248030;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #ffffff;
+}
