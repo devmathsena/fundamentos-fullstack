@@ -16,9 +16,11 @@ section {
 
 button {
     background-color: #248030;
+    border: 2px solid #248030;
     border-radius: 5px;
 }
 
 footer {
     background-color: #ffffff;
+    border-radius: 5px;
 }
