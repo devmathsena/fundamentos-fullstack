@@ -30,25 +30,24 @@ let option = parseInt(prompt(
 
 switch (option) {
     case 1:
-        result = meters * 1000;
-        break;
+      alert("Resultado: " + meters + "m = " + meters * 1000 + "mm");
+      break;
     case 2:
-        result = meters * 100;
-        break;
+      alert("Resultado: " + meters + "m = " + meters * 100 + "cm");
+      break;
     case 3:
-        result = meters * 10;
-        break;
+      alert("Resultado: " + meters + "m = " + meters * 10 + "dm");
+      break;
     case 4:
-        result = meters / 10;
-        break;
+      alert("Resultado: " + meters + "m = " + meters / 10 + "dam");
+      break;
     case 5:
-        result = meters / 100;
-        break;
+      alert("Resultado: " + meters + "m = " + meters / 100 + "hm");
+      break;
     case 6:
-        result = meters / 1000;
-        break;
+      alert("Resultado: " + meters + "m = " + meters / 1000 + "km");
+      break;
     default:
-        break;
-}
-
-alert("O resultado da conversão é: " + result);
+      alert("Opção inválida!");
+      break;
+  }
