@@ -64,7 +64,7 @@ Nenhuma opção correspondente.
 O `switch` também funciona com **números** e outras expressões:
 
 ```js
-let resultado = parseFloat(prompt("Escolha uma opção: 1, 2 ou 3"));
+let resultado = parseInt(prompt("Escolha uma opção: 1, 2 ou 3"));
 
 switch (resultado) {
   case 1:
