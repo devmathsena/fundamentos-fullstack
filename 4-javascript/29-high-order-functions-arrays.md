@@ -3,7 +3,7 @@
 Nesta etapa, você vai aprender sobre métodos de Arrays que são High Order Functions, muito utilizados na programação com JavaScript. 💪
 
 ## 🔥 O que são High Order Functions?
-High Order Functions são funções que recebem outras funções como argumento ou retornam funções como resultado. Métodos como **map**, **filter**, **reduce** e **find** fazem parte desse grupo, tornando o código mais elegante e funcional.
+High Order Functions são funções que recebem outras funções como argumento ou retornam funções como resultado. Métodos como **map**, **filter**, **reduce**, **find** e **sort** fazem parte desse grupo, tornando o código mais elegante e funcional.
 
 ---
 
@@ -95,13 +95,35 @@ console.log(personagem);
 
 ---
 
-### 🎯 Diferenças entre `map()`, `filter()`, `reduce()` e `find()`
+## 🔄 Método `sort()`
+### Ordenando Elementos
+O método `sort()` é utilizado para **ordenar os elementos** de um array de acordo com uma função de comparação.
+
+### Como Funciona:
+```javascript
+const numeros = [5, 3, 8, 1, 2];
+numeros.sort((a, b) => a - b);
+console.log(numeros);
+// Resultado: [1, 2, 3, 5, 8]
+```
+
+### 🔑 O que o `sort()` faz?
+- Modifica o array original.
+- Ordena os elementos com base na função de comparação.
+- Por padrão, ordena os valores como strings.
+
+✅ Vantagem: Perfeito para organizar dados de forma rápida.
+
+---
+
+### 🎯 Diferenças entre `map()`, `filter()`, `reduce()`, `find()` e `sort()`
 | Método   | Objetivo              | Modifica o Original? | Retorno            |
 |----------|----------------------|---------------------|------------------|
 | `map()`  | Transforma elementos | ❌ Não             | Novo Array      |
 | `filter()` | Filtra elementos    | ❌ Não             | Novo Array      |
 | `reduce()` | Reduz elementos    | ❌ Não             | Único Valor    |
 | `find()`   | Busca elementos    | ❌ Não             | Único Elemento |
+| `sort()`   | Ordena elementos   | ✅ Sim             | Array Modificado |
 
 ---
 
@@ -110,7 +132,6 @@ console.log(personagem);
 - Use `filter()` para selecionar dados.
 - Use `reduce()` para combinar valores.
 - Use `find()` para buscar um único item.
+- Use `sort()` para organizar listas de forma eficiente.
 
 Agora que você conhece esses métodos, seu código ficará mais elegante, limpo e funcional! 🔥🎯
-
-Pronto para a próxima parte? 🚀
