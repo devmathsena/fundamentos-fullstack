@@ -40,11 +40,13 @@ function alertResult(result) {
   alert(`O resultado é ${result}cm².`);
 }
 
-let option;
+function execute() {
 
-do {
-  option = parseInt(prompt(
-    `
+  let option;
+
+  do {
+    option = parseInt(prompt(
+      `
       Escolha uma das opções abaixo:\n
       1 - Área do triângulo
       2 - Área do retângulo
@@ -53,49 +55,52 @@ do {
       5 - Área do círculo
       6 - Sair
     `
-  ));
+    ));
 
-  switch (option) {
-    case 1:
-      let base1 = parseFloat(prompt("Informe a base(cm):"));
-      let height1 = parseFloat(prompt("Informe a altura(cm):"));
-      const result1 = triangleArea(base1, height1);
-      alertResult(result1);
-      break;
+    switch (option) {
+      case 1:
+        let base1 = parseFloat(prompt("Informe a base(cm):"));
+        let height1 = parseFloat(prompt("Informe a altura(cm):"));
+        const result1 = triangleArea(base1, height1);
+        alertResult(result1);
+        break;
 
-    case 2:
-      let base2 = parseFloat(prompt("Informe a base(cm):"));
-      let height2 = parseFloat(prompt("Informe a altura(cm):"));
-      const result2 = rectangleArea(base2, height2);
-      alertResult(result2);
-      break;
+      case 2:
+        let base2 = parseFloat(prompt("Informe a base(cm):"));
+        let height2 = parseFloat(prompt("Informe a altura(cm):"));
+        const result2 = rectangleArea(base2, height2);
+        alertResult(result2);
+        break;
 
-    case 3:
-      let side = parseFloat(prompt("Digite o tamanho do lado(cm):"));
-      const result3 = squareArea(side);
-      alertResult(result3);
-      break;
+      case 3:
+        let side = parseFloat(prompt("Digite o tamanho do lado(cm):"));
+        const result3 = squareArea(side);
+        alertResult(result3);
+        break;
 
-    case 4:
-      let higherBase = parseFloat(prompt("Digite a base maior(cm):"));
-      let lowerBase = parseFloat(prompt("Digite a base menor(cm):"));
-      let height4 = parseFloat(prompt("Informe a altura(cm):"));
-      const result4 = trapeziumArea(higherBase,lowerBase,height4);
-      alertResult(result4);
-      break;
+      case 4:
+        let higherBase = parseFloat(prompt("Digite a base maior(cm):"));
+        let lowerBase = parseFloat(prompt("Digite a base menor(cm):"));
+        let height4 = parseFloat(prompt("Informe a altura(cm):"));
+        const result4 = trapeziumArea(higherBase, lowerBase, height4);
+        alertResult(result4);
+        break;
 
-    case 5:
-      let radius = parseFloat(prompt("Digite o raio(cm):"))
-      const result5 = circleArea(radius);
-      alertResult(result5);
-      break;
+      case 5:
+        let radius = parseFloat(prompt("Digite o raio(cm):"))
+        const result5 = circleArea(radius);
+        alertResult(result5);
+        break;
 
-    case 6:
-      option = 6;
-      break;
+      case 6:
+        option = 6;
+        break;
 
-    default:
-      alert("Opção inválida!");
-  }
+      default:
+        alert("Opção inválida!");
+    }
 
-} while (option !== 6)
+  } while (option !== 6)
+}
+
+execute();
