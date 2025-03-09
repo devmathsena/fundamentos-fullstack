@@ -40,22 +40,26 @@ function alertResult(result) {
   alert(`O resultado é ${result}cm².`);
 }
 
+function displayMenu() {
+  return parseInt(prompt(
+    `
+    Escolha uma das opções abaixo:\n
+    1 - Área do triângulo
+    2 - Área do retângulo
+    3 - Área do quadrado
+    4 - Área do trapézio
+    5 - Área do círculo
+    6 - Sair
+  `
+  ));
+}
+
 function execute() {
 
   let option;
 
   do {
-    option = parseInt(prompt(
-      `
-      Escolha uma das opções abaixo:\n
-      1 - Área do triângulo
-      2 - Área do retângulo
-      3 - Área do quadrado
-      4 - Área do trapézio
-      5 - Área do círculo
-      6 - Sair
-    `
-    ));
+    option = displayMenu();
 
     switch (option) {
       case 1:
