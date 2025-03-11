@@ -44,13 +44,15 @@ function displayMenu() {
 }
 
 function displayJobOffers(jobOffers) {
-    // Usar reduce para somar toda quantidade de candidatos em todas as vagas <<<<
-    let allNumberOfCandidates = 0;
-    if(jobOffers.length > 0) {
-        for(let index=0; index < jobOffers.length; index++){
+
+    const allNumberOfCandidates = jobOffers.reduce((acc, job) => acc + job.candidates, 0);
+
+    if (jobOffers.length > 0) {
+        for (let index = 0; index < jobOffers.length; index++) {
             alert(`
-                Indíce: ${jobOffers[index]}.
-                Nome da vaga: ${jobOffers[index].name}    
+                Indíce: ${jobOffers[index].index}.
+                Nome da vaga: ${jobOffers[index].name}.
+                Quantidade de candidatos em todas as vagas: ${allNumberOfCandidates}.
             `)
         }
     } else {
@@ -65,18 +67,33 @@ function createJobOffer(jobOffers) {
     newJobOffer.name = prompt("Qual o nome da vaga?");
     newJobOffer.description = prompt("Qual a descrição da vaga?");
     newJobOffer.limitDate = prompt("Qual a data limite?");
-    
-    if(confirm(`
+
+    if (confirm(`
         Deseja cadastrar a vaga?
         Vaga: ${this.name}.
         Descrição: ${this.description}.
         Data limite: ${this.limitDate}
     `)) {
         jobOffers.push(newJobOffer);
+        newJobOffer.index = jobOffers.indexOf(newJobOffer);
+
         alert(`Vaga ${this.name} criada com sucesso!`);
     } else {
         return;
     }
+}
+
+function displayOneJobOffer(indexOfJobOffer, jobOffers) {
+    const jobOffer = jobOffers.find(jobOffer => jobOffer.index === indexOfJobOffer);
+
+    alert(`
+        Indíce: ${jobOffer.index}
+        Vaga: ${jobOffer.name}.
+        Descrição: ${jobOffer.description}.
+        Data limite: ${jobOffer.limitDate}.
+        Quantidade de candidatos: ${jobOffer.limitDate}.
+        Candidatos:  ${jobOffer.candidates}.
+    `);
 }
 
 function execute() {
@@ -91,7 +108,8 @@ function execute() {
             createJobOffer(jobOffers);
             break;
         case 3:
-
+            const indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+            displayOneJobOffer(indexOfJobOffer, jobOffers);
             break;
         case 4:
 
