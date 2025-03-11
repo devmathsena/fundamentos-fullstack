@@ -50,7 +50,7 @@ function displayJobOffers(jobOffers) {
     if (jobOffers.length > 0) {
         for (let index = 0; index < jobOffers.length; index++) {
             alert(`
-                Indíce: ${jobOffers[index]}.
+                Indíce: ${jobOffers[index].index}.
                 Nome da vaga: ${jobOffers[index].name}.
                 Quantidade de candidatos em todas as vagas: ${allNumberOfCandidates}.
             `)
@@ -75,10 +75,25 @@ function createJobOffer(jobOffers) {
         Data limite: ${this.limitDate}
     `)) {
         jobOffers.push(newJobOffer);
+        newJobOffer.index = jobOffers.indexOf(newJobOffer);
+
         alert(`Vaga ${this.name} criada com sucesso!`);
     } else {
         return;
     }
+}
+
+function displayOneJobOffer(indexOfJobOffer, jobOffers) {
+    const jobOffer = jobOffers.find(jobOffer => jobOffer.index === indexOfJobOffer);
+
+    alert(`
+        Indíce: ${jobOffer.index}
+        Vaga: ${jobOffer.name}.
+        Descrição: ${jobOffer.description}.
+        Data limite: ${jobOffer.limitDate}.
+        Quantidade de candidatos: ${jobOffer.limitDate}.
+        Candidatos:  ${jobOffer.candidates}.
+    `);
 }
 
 function execute() {
@@ -93,7 +108,8 @@ function execute() {
             createJobOffer(jobOffers);
             break;
         case 3:
-
+            const indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+            displayOneJobOffer(indexOfJobOffer, jobOffers);
             break;
         case 4:
 
