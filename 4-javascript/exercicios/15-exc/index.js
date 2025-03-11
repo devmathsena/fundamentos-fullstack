@@ -107,6 +107,17 @@ function registerCandidate(candidatesName, indexOfJobOffer, jobOffers) {
     }
 }
 
+function deleteJobOffer(indexOfJobOffer, jobOffers) {
+    if (
+        confirm(`Deseja excluir a vaga?\n`, displayOneJobOffer(indexOfJobOffer, jobOffers))
+    ) {
+        jobOffers.splice(indexOfJobOffer, 1);
+        alert("Vaga excluída com sucesso!");
+    } else {
+        return;
+    }
+}
+
 function execute() {
     do {
         let option = displayMenu();
@@ -129,7 +140,8 @@ function execute() {
                 registerCandidate(candidatesName, indexOfJobOffer, jobOffers);
                 break;
             case 5:
-
+                indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+                deleteJobOffer(indexOfJobOffer, jobOffers);
                 break;
             case 6:
                 option = 6;
