@@ -44,17 +44,22 @@ function displayMenu() {
 }
 
 function displayJobOffers(jobOffers) {
-    for(let index=0; index < jobOffers.length; index++){
-        jobOffers[index].toString();
+    if(jobOffers.length > 0) {
+        for(let index=0; index < jobOffers.length; index++){
+            jobOffers[index].toString();
+        }
+    } else {
+        alert("Sem vagas cadastradas!");
     }
 }
 
 function execute() {
     let option = displayMenu();
+    let jobOffers = [];
 
     switch (option) {
         case 1:
-
+            displayJobOffers(jobOffers);
             break;
         case 2:
 
