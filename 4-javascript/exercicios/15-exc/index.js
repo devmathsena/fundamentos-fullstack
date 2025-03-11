@@ -44,9 +44,14 @@ function displayMenu() {
 }
 
 function displayJobOffers(jobOffers) {
+    // Usar reduce para somar toda quantidade de candidatos em todas as vagas <<<<
+    let allNumberOfCandidates = 0;
     if(jobOffers.length > 0) {
         for(let index=0; index < jobOffers.length; index++){
-            jobOffers[index].toString();
+            alert(`
+                Indíce: ${jobOffers[index]}.
+                Nome da vaga: ${jobOffers[index].name}    
+            `)
         }
     } else {
         alert("Sem vagas cadastradas!");
