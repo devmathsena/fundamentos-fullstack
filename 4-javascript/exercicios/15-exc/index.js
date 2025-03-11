@@ -86,42 +86,57 @@ function createJobOffer(jobOffers) {
 function displayOneJobOffer(indexOfJobOffer, jobOffers) {
     const jobOffer = jobOffers.find(jobOffer => jobOffer.index === indexOfJobOffer);
 
-    alert(`
+    return `
         Indíce: ${jobOffer.index}
         Vaga: ${jobOffer.name}.
         Descrição: ${jobOffer.description}.
         Data limite: ${jobOffer.limitDate}.
         Quantidade de candidatos: ${jobOffer.limitDate}.
         Candidatos:  ${jobOffer.candidates}.
-    `);
+    `;
+}
+
+function registerCandidate(candidatesName, indexOfJobOffer, jobOffers) {
+    if (
+        confirm(`Deseja registrar o ${candidatesName} na vaga:\n`, displayOneJobOffer(indexOfJobOffer, jobOffers))
+    ) {
+        jobOffers[indexOfJobOffer].candidates.push(candidatesName);
+        alert("Candidato inscrito com sucesso!");
+    } else {
+        return;
+    }
 }
 
 function execute() {
-    let option = displayMenu();
-    let jobOffers = [];
+    do {
+        let option = displayMenu();
+        let jobOffers = [];
 
-    switch (option) {
-        case 1:
-            displayJobOffers(jobOffers);
-            break;
-        case 2:
-            createJobOffer(jobOffers);
-            break;
-        case 3:
-            const indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
-            displayOneJobOffer(indexOfJobOffer, jobOffers);
-            break;
-        case 4:
+        switch (option) {
+            case 1:
+                displayJobOffers(jobOffers);
+                break;
+            case 2:
+                createJobOffer(jobOffers);
+                break;
+            case 3:
+                let indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+                alert(displayOneJobOffer(indexOfJobOffer, jobOffers));
+                break;
+            case 4:
+                const candidatesName = prompt("Qual o nome do candidato?");
+                indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+                registerCandidate(candidatesName, indexOfJobOffer, jobOffers);
+                break;
+            case 5:
 
-            break;
-        case 5:
-
-            break;
-        case 6:
-
-            break;
-        default:
-            alert("Opção inválida!");
-            break;
-    }
+                break;
+            case 6:
+                option = 6;
+                break;
+            default:
+                alert("Opção inválida!");
+                break;
+        }
+    } while (option !== 6);
 }
