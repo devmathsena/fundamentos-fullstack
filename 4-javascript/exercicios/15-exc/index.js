@@ -43,6 +43,12 @@ function displayMenu() {
     );
 }
 
+function displayJobOffers(jobOffers) {
+    for(let index=0; index < jobOffers.length; index++){
+        jobOffers[index].toString();
+    }
+}
+
 function execute() {
     let option = displayMenu();
 
