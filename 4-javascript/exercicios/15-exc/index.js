@@ -28,3 +28,45 @@ exclusão da vaga antes de realmente exclui-la.
 Este é o exercício de revisão do módulo, então aproveite para utilizar todos os recursos vistos até agora sempre que 
 possível, como os objetos, arrays e funções.
 */
+
+
+function displayMenu() {
+    return parseInt(
+        prompt(`
+            1 - Listar vagas disponíveis
+            2 - Criar um nova vaga
+            3 - Visualizar uma vaga
+            4 - Inscrever um candidato em uma vaga
+            5 - Excluir uma vaga
+            6 - Sair
+        `)
+    );
+}
+
+function execute() {
+    let option = displayMenu();
+
+    switch (option) {
+        case 1:
+
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        case 5:
+
+            break;
+        case 6:
+
+            break;
+        default:
+            alert("Opção inválida!");
+            break;
+    }
+}
