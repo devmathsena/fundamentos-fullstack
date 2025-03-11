@@ -53,6 +53,25 @@ function displayJobOffers(jobOffers) {
     }
 }
 
+function createJobOffer(jobOffers) {
+    const newJobOffer = {};
+    newJobOffer.name = prompt("Qual o nome da vaga?");
+    newJobOffer.description = prompt("Qual a descrição da vaga?");
+    newJobOffer.limitDate = prompt("Qual a data limite?");
+    
+    if(confirm(`
+        Deseja cadastrar a vaga?
+        Vaga: ${this.name}.
+        Descrição: ${this.description}.
+        Data limite: ${this.limitDate}
+    `)) {
+        jobOffers.push(newJobOffer);
+        alert(`Vaga ${this.name} criada com sucesso!`);
+    } else {
+        return;
+    }
+}
+
 function execute() {
     let option = displayMenu();
     let jobOffers = [];
@@ -62,7 +81,7 @@ function execute() {
             displayJobOffers(jobOffers);
             break;
         case 2:
-
+            createJobOffer(jobOffers);
             break;
         case 3:
 
