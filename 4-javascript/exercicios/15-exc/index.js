@@ -28,3 +28,82 @@ exclusão da vaga antes de realmente exclui-la.
 Este é o exercício de revisão do módulo, então aproveite para utilizar todos os recursos vistos até agora sempre que 
 possível, como os objetos, arrays e funções.
 */
+
+
+function displayMenu() {
+    return parseInt(
+        prompt(`
+            1 - Listar vagas disponíveis
+            2 - Criar um nova vaga
+            3 - Visualizar uma vaga
+            4 - Inscrever um candidato em uma vaga
+            5 - Excluir uma vaga
+            6 - Sair
+        `)
+    );
+}
+
+function displayJobOffers(jobOffers) {
+    // Usar reduce para somar toda quantidade de candidatos em todas as vagas <<<<
+    let allNumberOfCandidates = 0;
+    if(jobOffers.length > 0) {
+        for(let index=0; index < jobOffers.length; index++){
+            alert(`
+                Indíce: ${jobOffers[index]}.
+                Nome da vaga: ${jobOffers[index].name}    
+            `)
+        }
+    } else {
+        alert("Sem vagas cadastradas!");
+    }
+}
+
+function createJobOffer(jobOffers) {
+    const newJobOffer = {};
+    newJobOffer.candidates = [];
+    newJobOffer.numberOfCandidates = 0;
+    newJobOffer.name = prompt("Qual o nome da vaga?");
+    newJobOffer.description = prompt("Qual a descrição da vaga?");
+    newJobOffer.limitDate = prompt("Qual a data limite?");
+    
+    if(confirm(`
+        Deseja cadastrar a vaga?
+        Vaga: ${this.name}.
+        Descrição: ${this.description}.
+        Data limite: ${this.limitDate}
+    `)) {
+        jobOffers.push(newJobOffer);
+        alert(`Vaga ${this.name} criada com sucesso!`);
+    } else {
+        return;
+    }
+}
+
+function execute() {
+    let option = displayMenu();
+    let jobOffers = [];
+
+    switch (option) {
+        case 1:
+            displayJobOffers(jobOffers);
+            break;
+        case 2:
+            createJobOffer(jobOffers);
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        case 5:
+
+            break;
+        case 6:
+
+            break;
+        default:
+            alert("Opção inválida!");
+            break;
+    }
+}
