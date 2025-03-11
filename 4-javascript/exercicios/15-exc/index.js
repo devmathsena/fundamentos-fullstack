@@ -97,9 +97,9 @@ function displayOneJobOffer(indexOfJobOffer, jobOffers) {
 }
 
 function registerCandidate(candidatesName, indexOfJobOffer, jobOffers) {
-    if(
+    if (
         confirm(`Deseja registrar o ${candidatesName} na vaga:\n`, displayOneJobOffer(indexOfJobOffer, jobOffers))
-    ){
+    ) {
         jobOffers[indexOfJobOffer].candidates.push(candidatesName);
         alert("Candidato inscrito com sucesso!");
     } else {
@@ -108,33 +108,35 @@ function registerCandidate(candidatesName, indexOfJobOffer, jobOffers) {
 }
 
 function execute() {
-    let option = displayMenu();
-    let jobOffers = [];
+    do {
+        let option = displayMenu();
+        let jobOffers = [];
 
-    switch (option) {
-        case 1:
-            displayJobOffers(jobOffers);
-            break;
-        case 2:
-            createJobOffer(jobOffers);
-            break;
-        case 3:
-            let indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
-            alert(displayOneJobOffer(indexOfJobOffer, jobOffers));
-            break;
-        case 4:
-            const candidatesName = prompt("Qual o nome do candidato?");
-            indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
-            registerCandidate(candidatesName, indexOfJobOffer, jobOffers);
-            break;
-        case 5:
+        switch (option) {
+            case 1:
+                displayJobOffers(jobOffers);
+                break;
+            case 2:
+                createJobOffer(jobOffers);
+                break;
+            case 3:
+                let indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+                alert(displayOneJobOffer(indexOfJobOffer, jobOffers));
+                break;
+            case 4:
+                const candidatesName = prompt("Qual o nome do candidato?");
+                indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
+                registerCandidate(candidatesName, indexOfJobOffer, jobOffers);
+                break;
+            case 5:
 
-            break;
-        case 6:
-
-            break;
-        default:
-            alert("Opção inválida!");
-            break;
-    }
+                break;
+            case 6:
+                option = 6;
+                break;
+            default:
+                alert("Opção inválida!");
+                break;
+        }
+    } while (option !== 6);
 }
