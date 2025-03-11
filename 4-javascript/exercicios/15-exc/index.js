@@ -55,6 +55,8 @@ function displayJobOffers(jobOffers) {
 
 function createJobOffer(jobOffers) {
     const newJobOffer = {};
+    newJobOffer.candidates = [];
+    newJobOffer.numberOfCandidates = 0;
     newJobOffer.name = prompt("Qual o nome da vaga?");
     newJobOffer.description = prompt("Qual a descrição da vaga?");
     newJobOffer.limitDate = prompt("Qual a data limite?");
