@@ -45,9 +45,9 @@ function displayMenu() {
 
 function displayJobOffers(jobOffers) {
 
-    const allNumberOfCandidates = jobOffers.reduce((acc, job) => acc + job.candidates, 0);
-
     if (jobOffers.length > 0) {
+        const allNumberOfCandidates = jobOffers.reduce((acc, job) => acc + job.numberOfCandidates, 0);
+
         for (let index = 0; index < jobOffers.length; index++) {
             alert(`
                 Indíce: ${jobOffers[index].index}.
@@ -69,15 +69,15 @@ function createJobOffer(jobOffers) {
     newJobOffer.limitDate = prompt("Qual a data limite?");
 
     if (confirm(`
-        Deseja cadastrar a vaga?
-        Vaga: ${this.name}.
-        Descrição: ${this.description}.
-        Data limite: ${this.limitDate}
+        Deseja cadastrar a vaga?\n
+        Vaga: ${newJobOffer.name}.
+        Descrição: ${newJobOffer.description}.
+        Data limite: ${newJobOffer.limitDate}
     `)) {
         jobOffers.push(newJobOffer);
         newJobOffer.index = jobOffers.indexOf(newJobOffer);
 
-        alert(`Vaga ${this.name} criada com sucesso!`);
+        alert(`Vaga ${newJobOffer.name} criada com sucesso!`);
     } else {
         return;
     }
@@ -86,21 +86,27 @@ function createJobOffer(jobOffers) {
 function displayOneJobOffer(indexOfJobOffer, jobOffers) {
     const jobOffer = jobOffers.find(jobOffer => jobOffer.index === indexOfJobOffer);
 
-    return `
-        Indíce: ${jobOffer.index}
-        Vaga: ${jobOffer.name}.
-        Descrição: ${jobOffer.description}.
-        Data limite: ${jobOffer.limitDate}.
-        Quantidade de candidatos: ${jobOffer.limitDate}.
-        Candidatos:  ${jobOffer.candidates}.
-    `;
+    if (jobOffer) {
+        return `
+            Indíce: ${jobOffer.index}
+            Vaga: ${jobOffer.name}.
+            Descrição: ${jobOffer.description}.
+            Data limite: ${jobOffer.limitDate}.
+            Quantidade de candidatos: ${jobOffer.numberOfCandidates}.
+            Candidatos:  ${jobOffer.candidates}.
+        `;
+    } else {
+        return "Vaga indexistente!";
+    }
 }
 
 function registerCandidate(candidatesName, indexOfJobOffer, jobOffers) {
+    const job = displayOneJobOffer(indexOfJobOffer, jobOffers);
     if (
-        confirm(`Deseja registrar o ${candidatesName} na vaga:\n`, displayOneJobOffer(indexOfJobOffer, jobOffers))
+        confirm(`Deseja registrar o ${candidatesName} na vaga:\n ${job}`)
     ) {
         jobOffers[indexOfJobOffer].candidates.push(candidatesName);
+        jobOffers[indexOfJobOffer].numberOfCandidates++;
         alert("Candidato inscrito com sucesso!");
     } else {
         return;
@@ -108,8 +114,9 @@ function registerCandidate(candidatesName, indexOfJobOffer, jobOffers) {
 }
 
 function deleteJobOffer(indexOfJobOffer, jobOffers) {
+    const job = displayOneJobOffer(indexOfJobOffer, jobOffers);
     if (
-        confirm(`Deseja excluir a vaga?\n`, displayOneJobOffer(indexOfJobOffer, jobOffers))
+        confirm(`Deseja excluir a vaga?\n ${job}`)
     ) {
         jobOffers.splice(indexOfJobOffer, 1);
         alert("Vaga excluída com sucesso!");
@@ -119,9 +126,11 @@ function deleteJobOffer(indexOfJobOffer, jobOffers) {
 }
 
 function execute() {
+    let option;
+    let jobOffers = [];
+
     do {
-        let option = displayMenu();
-        let jobOffers = [];
+        option = displayMenu();
 
         switch (option) {
             case 1:
@@ -131,17 +140,17 @@ function execute() {
                 createJobOffer(jobOffers);
                 break;
             case 3:
-                let indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
-                alert(displayOneJobOffer(indexOfJobOffer, jobOffers));
+                const indexOfJobOffer3 = parseInt(prompt("Qual o índice da vaga?"));
+                alert(displayOneJobOffer(indexOfJobOffer3, jobOffers));
                 break;
             case 4:
                 const candidatesName = prompt("Qual o nome do candidato?");
-                indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
-                registerCandidate(candidatesName, indexOfJobOffer, jobOffers);
+                const indexOfJobOffer4 = parseInt(prompt("Qual o índice da vaga?"));
+                registerCandidate(candidatesName, indexOfJobOffer4, jobOffers);
                 break;
             case 5:
-                indexOfJobOffer = parseInt(prompt("Qual o índice da vaga?"));
-                deleteJobOffer(indexOfJobOffer, jobOffers);
+                const indexOfJobOffer5 = parseInt(prompt("Qual o índice da vaga?"));
+                deleteJobOffer(indexOfJobOffer5, jobOffers);
                 break;
             case 6:
                 option = 6;
@@ -152,3 +161,5 @@ function execute() {
         }
     } while (option !== 6);
 }
+
+execute();
