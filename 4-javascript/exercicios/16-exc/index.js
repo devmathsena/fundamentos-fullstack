@@ -47,18 +47,28 @@ function selectPlayer() {
 
     list.appendChild(player);
     alert("Jogador escalado!");
+
+    cleanInputs();
   } else {
     alert("Escalação cancelada.")
+    cleanInputs();
   }
 
 }
 
 function getInputs() {
-  const player = {};
-  player.playerNumber = document.getElementById("playerNumber");
-  player.playerName = document.getElementById("playerName");
-  player.playerPosition = document.getElementById("playerPosition");
+  const inputs = {};
+  inputs.playerNumber = document.getElementById("playerNumber");
+  inputs.playerName = document.getElementById("playerName");
+  inputs.playerPosition = document.getElementById("playerPosition");
 
-  return player;
+  return inputs;
+}
+
+function cleanInputs() {
+  const inputs = getInputs();
+  inputs.playerNumber.value = "";
+  inputs.playerName.value = ""; 
+  inputs.playerPosition.value = ""; 
 }
 
