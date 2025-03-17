@@ -30,3 +30,10 @@ function createPlayer() {
 
   return player;
 }
+
+function selectPlayer() {
+  const player = createPlayer();
+  const list = document.getElementById("team__lineup");
+
+  list.appendChild(player);
+}
