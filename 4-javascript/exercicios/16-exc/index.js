@@ -73,7 +73,12 @@ function cleanInputs() {
 }
 
 function getList() {
-  const ul = document.getElementById("team__lineup");
+  const list = document.getElementById("team__lineup");
   
-  return ul;
+  return list;
+}
+
+function removePlayer() {
+  const list = getList();
+  console.log(list);
 }
