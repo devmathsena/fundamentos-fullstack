@@ -7,11 +7,11 @@
 </head>
 <body>
     <main>
-        <section class="form__section">
+        <section class="lineup__form__section">
             <h2>Escalar um Jogador</h2>
             <form action="">
                 <label for="playerPosition">Posição do Jogador</label>
-                <input type="text" name="position" id="position">
+                <input type="text" name="position" id="playerPosition">
                 
                 <label for="playerName">Nome do Jogador</label>
                 <input type="text" name="playerName" id="playerName">
@@ -23,7 +23,14 @@
             </form>
         </section>
         <section id="team__lineup__section">
+            <h2>Escalação do Time:</h2>
             <ul id="team__lineup"></ul>
+        </section>
+        <section class="remove__form__section">
+            <h2>Remover um Jogador</h2>
+            <label for="playerNumberToRemove">Digite o número da camisa do jogador:</label>
+            <input type="text" name="playerNumberToRemove" id="playerNumberToRemove">
+            <button type="button" onclick="removePlayer()">Remover</button>
         </section>
     </main>
     <script src="index.js"></script>
