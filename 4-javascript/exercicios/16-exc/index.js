@@ -18,3 +18,67 @@ Construa uma página web que permita montar a escalação de um time de jogadore
 Dica: lembrando que é possível acessar o texto de um input através da propriedade value.
 */
 
+function createPlayer(playerNumber, playerName, playerPosition) {
+  const player = document.createElement("li");
+
+  player.innerText = `${playerNumber} - ${playerName} - ${playerPosition}`;
+  player.playerPosition = `${playerPosition}`;
+  player.playerNumber = `${playerNumber}`;
+
+  return player;
+}
+
+function selectPlayer() {
+  const player = getInputs();
+  const playerNumber = player.playerNumber.value;
+  const playerName = player.playerName.value;
+  const playerPosition = player.playerPosition.value;
+
+  const confirmation = confirm(`
+      Deseja criar o jogador abaixo?
+      Número da camisa: ${playerNumber}.
+      Nome do jogador: ${playerName}.
+      Posição do jogador: ${playerPosition}.
+    `)
+
+  if (confirmation) {
+    const player = createPlayer(playerNumber, playerName, playerPosition);
+    const list = getList();
+
+    list.appendChild(player);
+    alert("Jogador escalado!");
+
+    cleanInputs();
+  } else {
+    alert("Escalação cancelada.")
+    cleanInputs();
+  }
+
+}
+
+function getInputs() {
+  const inputs = {};
+  inputs.playerNumber = document.getElementById("playerNumber");
+  inputs.playerName = document.getElementById("playerName");
+  inputs.playerPosition = document.getElementById("playerPosition");
+
+  return inputs;
+}
+
+function cleanInputs() {
+  const inputs = getInputs();
+  inputs.playerNumber.value = "";
+  inputs.playerName.value = ""; 
+  inputs.playerPosition.value = ""; 
+}
+
+function getList() {
+  const list = document.getElementById("team__lineup");
+  
+  return list;
+}
+
+function removePlayer() {
+  const list = getList();
+  console.log(list);
+}
