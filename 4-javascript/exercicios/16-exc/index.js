@@ -29,9 +29,10 @@ function createPlayer(playerNumber, playerName, playerPosition) {
 }
 
 function selectPlayer() {
-  const playerNumber = document.getElementById("playerNumber").value;
-  const playerName = document.getElementById("playerName").value;
-  const playerPosition = document.getElementById("playerPosition").value;
+  const player = getInputs();
+  const playerNumber = player.playerNumber.value;
+  const playerName = player.playerName.value;
+  const playerPosition = player.playerPosition.value;
 
   const confirmation = confirm(`
       Deseja criar o jogador abaixo?
@@ -50,5 +51,14 @@ function selectPlayer() {
     alert("Escalação cancelada.")
   }
 
+}
+
+function getInputs() {
+  const player = {};
+  player.playerNumber = document.getElementById("playerNumber");
+  player.playerName = document.getElementById("playerName");
+  player.playerPosition = document.getElementById("playerPosition");
+
+  return player;
 }
 
