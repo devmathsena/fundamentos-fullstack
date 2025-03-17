@@ -18,3 +18,8 @@ Construa uma página web que permita montar a escalação de um time de jogadore
 Dica: lembrando que é possível acessar o texto de um input através da propriedade value.
 */
 
+function createPlayer() {
+  const playerName = document.getElementById("playerName");
+  const playerPosition = document.getElementById("playerPosition");
+  const playerNumber = document.getElementById("playerNumber");
+}
