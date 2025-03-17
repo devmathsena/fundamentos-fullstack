@@ -43,7 +43,7 @@ function selectPlayer() {
 
   if (confirmation) {
     const player = createPlayer(playerNumber, playerName, playerPosition);
-    const list = document.getElementById("team__lineup");
+    const list = getList();
 
     list.appendChild(player);
     alert("Jogador escalado!");
@@ -72,3 +72,8 @@ function cleanInputs() {
   inputs.playerPosition.value = ""; 
 }
 
+function getList() {
+  const ul = document.getElementById("team__lineup");
+  
+  return ul;
+}
