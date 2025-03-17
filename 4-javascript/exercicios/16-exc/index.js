@@ -22,4 +22,11 @@ function createPlayer() {
   const playerName = document.getElementById("playerName");
   const playerPosition = document.getElementById("playerPosition");
   const playerNumber = document.getElementById("playerNumber");
+  const player = document.createElement("li");
+
+  player.innerText = `${playerNumber} - ${playerName} - ${playerPosition}`;
+  player.playerPosition = `${playerPosition}`;
+  player.playerNumber = `${playerNumber}`;
+
+  return player;
 }
