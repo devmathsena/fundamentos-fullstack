@@ -18,10 +18,7 @@ Construa uma página web que permita montar a escalação de um time de jogadore
 Dica: lembrando que é possível acessar o texto de um input através da propriedade value.
 */
 
-function createPlayer() {
-  const playerName = document.getElementById("playerName");
-  const playerPosition = document.getElementById("playerPosition");
-  const playerNumber = document.getElementById("playerNumber");
+function createPlayer(playerName, playerPosition, playerNumber) {
   const player = document.createElement("li");
 
   player.innerText = `${playerNumber} - ${playerName} - ${playerPosition}`;
@@ -32,8 +29,25 @@ function createPlayer() {
 }
 
 function selectPlayer() {
-  const player = createPlayer();
-  const list = document.getElementById("team__lineup");
+  const playerName = document.getElementById("playerName").value;
+  const playerPosition = document.getElementById("playerPosition").value;
+  const playerNumber = document.getElementById("playerNumber").value;
 
-  list.appendChild(player);
+  const confirmation = confirm(`
+      Deseja criar o jogador abaixo?
+      Número da camisa: ${playerNumber}.
+      Nome do jogador: ${playerName}.
+      Posição do jogador: ${playerPosition}.
+    `)
+
+  if (confirmation) {
+    const player = createPlayer(playerName, playerPosition, playerNumber);
+    const list = document.getElementById("team__lineup");
+
+    list.appendChild(player);
+    alert("Jogador escalado!");
+  } else {
+    alert("Escalação cancelada.")
+  }
+
 }
