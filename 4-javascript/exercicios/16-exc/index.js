@@ -35,6 +35,11 @@ function selectPlayer() {
   const playerName = player.playerName.value;
   const playerPosition = player.playerPosition.value;
 
+  if (playerNumber === "" || playerName === "" || playerPosition === "") {
+    alert("Prencha todos os dados do jogador para poder escalar!");
+    return;
+  }
+
   const confirmation = confirm(`
       Deseja criar o jogador abaixo?
       Número da camisa: ${playerNumber}.
@@ -69,37 +74,55 @@ function getInputs() {
 function cleanInputs() {
   const inputs = getInputs();
   inputs.playerNumber.value = "";
-  inputs.playerName.value = ""; 
-  inputs.playerPosition.value = ""; 
+  inputs.playerName.value = "";
+  inputs.playerPosition.value = "";
 }
 
 function getList() {
   const list = document.getElementById("team__lineup");
-  
+
   return list;
 }
 
 function removePlayer() {
-  
-  const list = getList();
-  const listItems = Array.from(list.children);
-  const playerNumber = document.getElementById("playerNumberToRemove").value;
+
   let excluded = false;
 
-  if (playerNumber === "") {
+  const list = getList();
+  const listItems = Array.from(list.children);
+
+  const playerNumberToRemove = document.getElementById("playerNumberToRemove");
+
+  if (playerNumberToRemove.value === "") {
     alert("Digite a camisa do jogador primeiro!");
     return;
   }
 
+  let player = document.querySelector(`#team__lineup > li[playerNumber="${playerNumberToRemove.value}"]`);
+
   listItems.forEach(listItem => {
-    if (listItem.getAttribute("playerNumber") == playerNumber) {
+    if (listItem.getAttribute("playerNumber") == playerNumberToRemove.value) {
+
+      const confirmation = confirm(`
+          Deseja excluir o jogador abaixo?
+          Número da camisa: ${player.getAttribute("playerNumber", playerNumber)}.
+          Nome do jogador: ${player.getAttribute("playerName", playerName)}.
+          Posição do jogador: ${player.getAttribute("playerPosition", playerPosition)}.
+        `)
+
+      if (!confirmation) {
+        return;
+      }
+
       listItem.remove();
       excluded = true;
+      playerNumberToRemove.value = "";
       alert("Jogador excluído!");
     }
   });
 
-  if(!excluded) {
+  if (!excluded) {
+    playerNumberToRemove.value = "";
     alert("Jogador não localizado.");
   }
 }
