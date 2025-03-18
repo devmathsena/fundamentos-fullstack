@@ -22,8 +22,9 @@ function createPlayer(playerNumber, playerName, playerPosition) {
   const player = document.createElement("li");
 
   player.innerText = `${playerNumber} - ${playerName} - ${playerPosition}`;
-  player.playerPosition = `${playerPosition}`;
-  player.playerNumber = `${playerNumber}`;
+  player.setAttribute("playerNumber", playerNumber);
+  player.setAttribute("playerName", playerName);
+  player.setAttribute("playerPosition", playerPosition);
 
   return player;
 }
@@ -33,6 +34,11 @@ function selectPlayer() {
   const playerNumber = player.playerNumber.value;
   const playerName = player.playerName.value;
   const playerPosition = player.playerPosition.value;
+
+  if (playerNumber === "" || playerName === "" || playerPosition === "") {
+    alert("Prencha todos os dados do jogador para poder escalar!");
+    return;
+  }
 
   const confirmation = confirm(`
       Deseja criar o jogador abaixo?
@@ -68,17 +74,55 @@ function getInputs() {
 function cleanInputs() {
   const inputs = getInputs();
   inputs.playerNumber.value = "";
-  inputs.playerName.value = ""; 
-  inputs.playerPosition.value = ""; 
+  inputs.playerName.value = "";
+  inputs.playerPosition.value = "";
 }
 
 function getList() {
   const list = document.getElementById("team__lineup");
-  
+
   return list;
 }
 
 function removePlayer() {
+
+  let excluded = false;
+
   const list = getList();
-  console.log(list);
+  const listItems = Array.from(list.children);
+
+  const playerNumberToRemove = document.getElementById("playerNumberToRemove");
+
+  if (playerNumberToRemove.value === "") {
+    alert("Digite a camisa do jogador primeiro!");
+    return;
+  }
+
+  let player = document.querySelector(`#team__lineup > li[playerNumber="${playerNumberToRemove.value}"]`);
+
+  listItems.forEach(listItem => {
+    if (listItem.getAttribute("playerNumber") == playerNumberToRemove.value) {
+
+      const confirmation = confirm(`
+          Deseja excluir o jogador abaixo?
+          Número da camisa: ${player.getAttribute("playerNumber", playerNumber)}.
+          Nome do jogador: ${player.getAttribute("playerName", playerName)}.
+          Posição do jogador: ${player.getAttribute("playerPosition", playerPosition)}.
+        `)
+
+      if (!confirmation) {
+        return;
+      }
+
+      listItem.remove();
+      excluded = true;
+      playerNumberToRemove.value = "";
+      alert("Jogador excluído!");
+    }
+  });
+
+  if (!excluded) {
+    playerNumberToRemove.value = "";
+    alert("Jogador não localizado.");
+  }
 }
