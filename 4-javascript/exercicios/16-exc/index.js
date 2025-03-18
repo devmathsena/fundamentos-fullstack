@@ -22,8 +22,9 @@ function createPlayer(playerNumber, playerName, playerPosition) {
   const player = document.createElement("li");
 
   player.innerText = `${playerNumber} - ${playerName} - ${playerPosition}`;
-  player.playerPosition = `${playerPosition}`;
-  player.playerNumber = `${playerNumber}`;
+  player.setAttribute("playerNumber", playerNumber);
+  player.setAttribute("playerName", playerName);
+  player.setAttribute("playerPosition", playerPosition);
 
   return player;
 }
@@ -79,6 +80,26 @@ function getList() {
 }
 
 function removePlayer() {
+  
   const list = getList();
-  console.log(list);
+  const listItems = Array.from(list.children);
+  const playerNumber = document.getElementById("playerNumberToRemove").value;
+  let excluded = false;
+
+  if (playerNumber === "") {
+    alert("Digite a camisa do jogador primeiro!");
+    return;
+  }
+
+  listItems.forEach(listItem => {
+    if (listItem.getAttribute("playerNumber") == playerNumber) {
+      listItem.remove();
+      excluded = true;
+      alert("Jogador excluído!");
+    }
+  });
+
+  if(!excluded) {
+    alert("Jogador não localizado.");
+  }
 }
