@@ -14,3 +14,11 @@ Construa uma página web que permita cadastrar desenvolvedores, suas tecnologias
 Para esse exercício você deve utilizar apenas eventos adicionados via javascript e a página deve funcionar 
 sem acionar um recarregamento.
 */
+
+function addInputs() {
+  const submit = document.getElementById("add");
+
+  submit.addEventListener("onclick", function() {
+    //chamar funçao que cria os inputs para adicionar no forms
+  });
+}
