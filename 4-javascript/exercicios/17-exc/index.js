@@ -14,3 +14,25 @@ Construa uma página web que permita cadastrar desenvolvedores, suas tecnologias
 Para esse exercício você deve utilizar apenas eventos adicionados via javascript e a página deve funcionar 
 sem acionar um recarregamento.
 */
+
+function addInputs() {
+  const submit = document.getElementById("add");
+
+  submit.addEventListener("onclick", function() {
+    //chamar funçao que cria os inputs para adicionar no forms
+  });
+}
+
+function createInputs() {
+  const tecNameLabel = document.createElement("label");
+  tecNameLabel.for = "tec__name";
+  tecName.innerText = "Tecnologia:";
+
+  const tecName = document.createElement("input");
+  tecName.type = "text";
+  tecName.id = "tec__name";
+
+  const fieldSet = document.createElement("fieldset");
+
+  const legend = document.createElement("");
+}
