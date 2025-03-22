@@ -25,6 +25,10 @@ function addInputs() {
   });
 }
 
+function registerDev(dev) {
+  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+}
+
 function createInputs() {
   const tecNameLabel = document.createElement("label");
   tecNameLabel.for = "tec__name";
@@ -39,7 +43,7 @@ function createInputs() {
   const legend = document.createElement("legend");
   legend.innerText = "Tecnologia";
 
-  const forms = document.querySelector(".register__section > form");
+  const form = document.querySelector(".register__section > form");
 
   fieldSet.appendChild(legend);
   
@@ -76,12 +80,17 @@ function createInputs() {
   });
 
   fieldSet.appendChild(removeTecButton);
-  forms.appendChild(fieldSet);
-  
-}
+  form.appendChild(fieldSet);
 
-function registerDev(dev) {
-  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+  const registerDevButton = document.createElement("button");
+  registerDevButton.innerText = "Registrar Dev";
+  registerDevButton.addEventListener("click", function(ev){
+    ev.preventDefault();
+    registerDev(dev);
+  });
+
+  form.appendChild(registerDevButton);
+  
 }
 
 function execute() {
