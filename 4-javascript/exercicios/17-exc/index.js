@@ -48,8 +48,7 @@ function createInputs() {
 
   forms.appendChild(fieldSet);
 
-  // Criando opções de radio
-  const levels = ["Iniciante", "Intermediário", "Avançado"];
+  const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
 
   levels.forEach((level, index) => {
     const radioContainer = document.createElement("div");
@@ -68,6 +67,18 @@ function createInputs() {
     radioContainer.appendChild(label);
     fieldSet.appendChild(radioContainer);
   });
+
+  const removeTecButton = document.createElement("button");
+  removeTecButton.innerText = "Remover";
+
+  removeTecButton.addEventListener("click", function(ev) {
+    ev.preventDefault();
+    const parent = this.parentElement;
+    parent.remove();
+  });
+
+  fieldSet.appendChild(removeTecButton);
+
 }
 
 function execute() {
