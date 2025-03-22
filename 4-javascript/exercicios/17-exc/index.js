@@ -46,7 +46,28 @@ function createInputs() {
   fieldSet.appendChild(tecNameLabel)
   fieldSet.appendChild(tecName)
 
-  forms.appendChild(fieldSet);  
+  forms.appendChild(fieldSet);
+
+  // Criando opções de radio
+  const levels = ["Iniciante", "Intermediário", "Avançado"];
+
+  levels.forEach((level, index) => {
+    const radioContainer = document.createElement("div");
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "tec_level"; 
+    radio.id = `level_${index}`;
+    radio.value = level.toLowerCase();
+
+    const label = document.createElement("label");
+    label.htmlFor = radio.id;
+    label.innerText = level;
+
+    radioContainer.appendChild(radio);
+    radioContainer.appendChild(label);
+    fieldSet.appendChild(radioContainer);
+  });
 }
 
 function execute() {
