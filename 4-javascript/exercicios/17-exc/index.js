@@ -80,8 +80,12 @@ function createInputs() {
   
 }
 
+function registerDev(dev) {
+  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+}
+
 function execute() {
-  addInputs()
+  addInputs();
 }
 
 execute();
