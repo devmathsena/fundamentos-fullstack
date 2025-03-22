@@ -18,15 +18,17 @@ sem acionar um recarregamento.
 function addInputs() {
   const submit = document.getElementById("add");
 
-  submit.addEventListener("onclick", function() {
-    //chamar funçao que cria os inputs para adicionar no forms
+  submit.addEventListener("click", function(ev) {
+    console.log("click");
+    ev.preventDefault();
+    createInputs();
   });
 }
 
 function createInputs() {
   const tecNameLabel = document.createElement("label");
   tecNameLabel.for = "tec__name";
-  tecName.innerText = "Tecnologia:";
+  tecNameLabel.innerText = "Nome:";
 
   const tecName = document.createElement("input");
   tecName.type = "text";
@@ -34,5 +36,21 @@ function createInputs() {
 
   const fieldSet = document.createElement("fieldset");
 
-  const legend = document.createElement("");
+  const legend = document.createElement("legend");
+  legend.innerText = "Tecnologia";
+
+  const forms = document.querySelector(".register__section > form");
+
+  fieldSet.appendChild(legend);
+  
+  fieldSet.appendChild(tecNameLabel)
+  fieldSet.appendChild(tecName)
+
+  forms.appendChild(fieldSet);  
 }
+
+function execute() {
+  addInputs()
+}
+
+execute();
