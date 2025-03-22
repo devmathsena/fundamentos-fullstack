@@ -46,7 +46,39 @@ function createInputs() {
   fieldSet.appendChild(tecNameLabel)
   fieldSet.appendChild(tecName)
 
-  forms.appendChild(fieldSet);  
+  forms.appendChild(fieldSet);
+
+  const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
+
+  levels.forEach((level, index) => {
+    const radioContainer = document.createElement("div");
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "tec_level"; 
+    radio.id = `level_${index}`;
+    radio.value = level.toLowerCase();
+
+    const label = document.createElement("label");
+    label.htmlFor = radio.id;
+    label.innerText = level;
+
+    radioContainer.appendChild(radio);
+    radioContainer.appendChild(label);
+    fieldSet.appendChild(radioContainer);
+  });
+
+  const removeTecButton = document.createElement("button");
+  removeTecButton.innerText = "Remover";
+
+  removeTecButton.addEventListener("click", function(ev) {
+    ev.preventDefault();
+    const parent = this.parentElement;
+    parent.remove();
+  });
+
+  fieldSet.appendChild(removeTecButton);
+
 }
 
 function execute() {
