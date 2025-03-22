@@ -46,8 +46,6 @@ function createInputs() {
   fieldSet.appendChild(tecNameLabel)
   fieldSet.appendChild(tecName)
 
-  forms.appendChild(fieldSet);
-
   const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
 
   levels.forEach((level, index) => {
@@ -78,11 +76,16 @@ function createInputs() {
   });
 
   fieldSet.appendChild(removeTecButton);
+  forms.appendChild(fieldSet);
+  
+}
 
+function registerDev(dev) {
+  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
 }
 
 function execute() {
-  addInputs()
+  addInputs();
 }
 
 execute();
