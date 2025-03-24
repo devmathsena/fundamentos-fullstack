@@ -23,7 +23,7 @@ function addInputs() {
     console.log("click");
     ev.preventDefault();
     if (devName.value !== "") {
-      createInputs();
+      createTec();
     } else {
       alert("Preencha o nome antes!");
     }
@@ -35,8 +35,8 @@ function registerDev(dev) {
   //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
 }
 
-function createInputs() {
-  const uniqueId = Date.now();
+function createFieldset(uniqueId) {
+  const fieldset = document.createElement("fieldset");
 
   const tecNameLabel = document.createElement("label");
   tecNameLabel.for = `tec__name_${uniqueId}`;
@@ -46,10 +46,29 @@ function createInputs() {
   tecName.type = "text";
   tecName.id = `tec__name_${uniqueId}`;
 
-  const fieldSet = document.createElement("fieldset");
-
   const legend = document.createElement("legend");
   legend.innerText = "Tecnologia";
+
+  const removeTecButton = document.createElement("button");
+  removeTecButton.innerText = "Remover";
+
+  removeTecButton.addEventListener("click", function(ev) {
+    ev.preventDefault();
+    this.parentElement.remove();
+  });
+
+  fieldset.appendChild(legend);
+  fieldset.appendChild(tecNameLabel);
+  fieldset.appendChild(tecName);
+  fieldset.appendChild(removeTecButton);
+
+  return fieldset
+}
+
+function createTec() {
+  const uniqueId = Date.now();
+
+  const fieldset = createFieldset(uniqueId);
 
   const form = document.querySelector(".register__section > form");
 
@@ -65,10 +84,6 @@ function createInputs() {
     form.appendChild(registerDevButton);
   }
 
-  fieldSet.appendChild(legend);
-  fieldSet.appendChild(tecNameLabel);
-  fieldSet.appendChild(tecName);
-
   const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
 
   levels.forEach((level, index) => {
@@ -76,7 +91,7 @@ function createInputs() {
 
     const radio = document.createElement("input");
     radio.type = "radio";
-    radio.name = `tec_level_${uniqueId}`; // Nome único
+    radio.name = `tec_level_${uniqueId}`;
     radio.id = `level_${uniqueId}_${index}`;
     radio.value = level.toLowerCase();
 
@@ -86,19 +101,10 @@ function createInputs() {
 
     radioContainer.appendChild(radio);
     radioContainer.appendChild(label);
-    fieldSet.appendChild(radioContainer);
+    fieldset.appendChild(radioContainer);
   });
 
-  const removeTecButton = document.createElement("button");
-  removeTecButton.innerText = "Remover";
-
-  removeTecButton.addEventListener("click", function(ev) {
-    ev.preventDefault();
-    this.parentElement.remove();
-  });
-
-  fieldSet.appendChild(removeTecButton);
-  form.appendChild(fieldSet);
+  form.appendChild(fieldset);
 }
 
 function execute() {
