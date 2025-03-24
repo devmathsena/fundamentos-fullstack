@@ -17,11 +17,17 @@ sem acionar um recarregamento.
 
 function addInputs() {
   const submit = document.getElementById("add");
+  const devName = document.getElementById("name");
 
   submit.addEventListener("click", function(ev) {
     console.log("click");
     ev.preventDefault();
-    createInputs();
+    if (devName.value !== "") {
+      createInputs();
+    } else {
+      alert("Preencha o nome antes!");
+    }
+    
   });
 }
 
@@ -44,6 +50,15 @@ function createInputs() {
   legend.innerText = "Tecnologia";
 
   const form = document.querySelector(".register__section > form");
+
+  const registerDevButton = document.createElement("button");
+  registerDevButton.innerText = "Registrar Dev";
+  registerDevButton.addEventListener("click", function(ev){
+    ev.preventDefault();
+    registerDev(dev);
+  });
+
+  form.appendChild(registerDevButton);
 
   fieldSet.appendChild(legend);
   
@@ -81,15 +96,6 @@ function createInputs() {
 
   fieldSet.appendChild(removeTecButton);
   form.appendChild(fieldSet);
-
-  const registerDevButton = document.createElement("button");
-  registerDevButton.innerText = "Registrar Dev";
-  registerDevButton.addEventListener("click", function(ev){
-    ev.preventDefault();
-    registerDev(dev);
-  });
-
-  form.appendChild(registerDevButton);
   
 }
 
