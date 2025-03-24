@@ -53,12 +53,15 @@ function createInputs() {
 
   const registerDevButton = document.createElement("button");
   registerDevButton.innerText = "Registrar Dev";
+  registerDevButton.id = "register__dev__button";
   registerDevButton.addEventListener("click", function(ev){
     ev.preventDefault();
     registerDev(dev);
   });
 
-  form.appendChild(registerDevButton);
+  if(!document.getElementById("register__dev__button")){
+    form.appendChild(registerDevButton);
+  }
 
   fieldSet.appendChild(legend);
   
