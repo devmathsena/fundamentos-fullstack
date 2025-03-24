@@ -36,13 +36,15 @@ function registerDev(dev) {
 }
 
 function createInputs() {
+  const uniqueId = Date.now();
+
   const tecNameLabel = document.createElement("label");
-  tecNameLabel.for = "tec__name";
+  tecNameLabel.for = `tec__name_${uniqueId}`;
   tecNameLabel.innerText = "Nome:";
 
   const tecName = document.createElement("input");
   tecName.type = "text";
-  tecName.id = "tec__name";
+  tecName.id = `tec__name_${uniqueId}`;
 
   const fieldSet = document.createElement("fieldset");
 
@@ -54,19 +56,18 @@ function createInputs() {
   const registerDevButton = document.createElement("button");
   registerDevButton.innerText = "Registrar Dev";
   registerDevButton.id = "register__dev__button";
-  registerDevButton.addEventListener("click", function(ev){
+  registerDevButton.addEventListener("click", function(ev) {
     ev.preventDefault();
     registerDev(dev);
   });
 
-  if(!document.getElementById("register__dev__button")){
+  if (!document.getElementById("register__dev__button")) {
     form.appendChild(registerDevButton);
   }
 
   fieldSet.appendChild(legend);
-  
-  fieldSet.appendChild(tecNameLabel)
-  fieldSet.appendChild(tecName)
+  fieldSet.appendChild(tecNameLabel);
+  fieldSet.appendChild(tecName);
 
   const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
 
@@ -75,8 +76,8 @@ function createInputs() {
 
     const radio = document.createElement("input");
     radio.type = "radio";
-    radio.name = "tec_level"; 
-    radio.id = `level_${index}`;
+    radio.name = `tec_level_${uniqueId}`; // Nome único
+    radio.id = `level_${uniqueId}_${index}`;
     radio.value = level.toLowerCase();
 
     const label = document.createElement("label");
@@ -93,13 +94,11 @@ function createInputs() {
 
   removeTecButton.addEventListener("click", function(ev) {
     ev.preventDefault();
-    const parent = this.parentElement;
-    parent.remove();
+    this.parentElement.remove();
   });
 
   fieldSet.appendChild(removeTecButton);
   form.appendChild(fieldSet);
-  
 }
 
 function execute() {
