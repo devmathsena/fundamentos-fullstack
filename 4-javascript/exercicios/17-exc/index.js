@@ -17,34 +17,57 @@ sem acionar um recarregamento.
 
 function addInputs() {
   const submit = document.getElementById("add");
+  const devName = document.getElementById("name");
 
   submit.addEventListener("click", function(ev) {
     console.log("click");
     ev.preventDefault();
-    createInputs();
+    if (devName.value !== "") {
+      createInputs();
+    } else {
+      alert("Preencha o nome antes!");
+    }
+    
   });
 }
 
+function registerDev(dev) {
+  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+}
+
 function createInputs() {
+  const uniqueId = Date.now();
+
   const tecNameLabel = document.createElement("label");
-  tecNameLabel.for = "tec__name";
+  tecNameLabel.for = `tec__name_${uniqueId}`;
   tecNameLabel.innerText = "Nome:";
 
   const tecName = document.createElement("input");
   tecName.type = "text";
-  tecName.id = "tec__name";
+  tecName.id = `tec__name_${uniqueId}`;
 
   const fieldSet = document.createElement("fieldset");
 
   const legend = document.createElement("legend");
   legend.innerText = "Tecnologia";
 
-  const forms = document.querySelector(".register__section > form");
+  const form = document.querySelector(".register__section > form");
+
+  const registerDevButton = document.createElement("button");
+  registerDevButton.innerText = "Registrar Dev";
+  registerDevButton.id = "register__dev__button";
+  registerDevButton.addEventListener("click", function(ev) {
+    ev.preventDefault();
+    registerDev(dev);
+  });
+
+  if (!document.getElementById("register__dev__button")) {
+    form.appendChild(registerDevButton);
+  }
 
   fieldSet.appendChild(legend);
-  
-  fieldSet.appendChild(tecNameLabel)
-  fieldSet.appendChild(tecName)
+  fieldSet.appendChild(tecNameLabel);
+  fieldSet.appendChild(tecName);
 
   const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
 
@@ -53,8 +76,8 @@ function createInputs() {
 
     const radio = document.createElement("input");
     radio.type = "radio";
-    radio.name = "tec_level"; 
-    radio.id = `level_${index}`;
+    radio.name = `tec_level_${uniqueId}`; // Nome único
+    radio.id = `level_${uniqueId}_${index}`;
     radio.value = level.toLowerCase();
 
     const label = document.createElement("label");
@@ -71,17 +94,11 @@ function createInputs() {
 
   removeTecButton.addEventListener("click", function(ev) {
     ev.preventDefault();
-    const parent = this.parentElement;
-    parent.remove();
+    this.parentElement.remove();
   });
 
   fieldSet.appendChild(removeTecButton);
-  forms.appendChild(fieldSet);
-  
-}
-
-function registerDev(dev) {
-  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+  form.appendChild(fieldSet);
 }
 
 function execute() {
