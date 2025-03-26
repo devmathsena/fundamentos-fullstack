@@ -19,7 +19,7 @@ function addInputs() {
   const submit = document.getElementById("add");
   const devName = document.getElementById("name");
 
-  submit.addEventListener("click", function(ev) {
+  submit.addEventListener("click", function (ev) {
     console.log("click");
     ev.preventDefault();
     if (devName.value !== "") {
@@ -27,12 +27,35 @@ function addInputs() {
     } else {
       alert("Preencha o nome antes!");
     }
-    
+
   });
 }
 
-function registerDev(dev) {
-  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+function registerDev() {
+  const name = document.getElementById("name").value.trim();
+  if (!name) {
+    alert("Por favor, insira um nome.");
+    return;
+  }
+
+  const techs = [];
+  document.querySelectorAll("fieldset").forEach(fieldset => {
+    const techNameInput = fieldset.querySelector("input[type='text']");
+    const techName = techNameInput ? techNameInput.value.trim() : "";
+    if (!techName) return;
+
+    const selectedLevel = fieldset.querySelector("input[type='radio']:checked");
+    const techLevel = selectedLevel ? selectedLevel.value : "Não informado";
+
+    techs.push({ name: techName, level: techLevel });
+  });
+
+  const dev = {
+    name,
+    technologies: techs
+  };
+
+  console.log(dev);
 }
 
 function createFieldset(uniqueId) {
@@ -52,7 +75,7 @@ function createFieldset(uniqueId) {
   const removeTecButton = document.createElement("button");
   removeTecButton.innerText = "Remover";
 
-  removeTecButton.addEventListener("click", function(ev) {
+  removeTecButton.addEventListener("click", function (ev) {
     ev.preventDefault();
     this.parentElement.remove();
   });
@@ -75,9 +98,9 @@ function createTec() {
   const registerDevButton = document.createElement("button");
   registerDevButton.innerText = "Registrar Dev";
   registerDevButton.id = "register__dev__button";
-  registerDevButton.addEventListener("click", function(ev) {
+  registerDevButton.addEventListener("click", function (ev) {
     ev.preventDefault();
-    registerDev(dev);
+    registerDev();
   });
 
   if (!document.getElementById("register__dev__button")) {
