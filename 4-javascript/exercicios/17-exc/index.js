@@ -19,24 +19,47 @@ function addInputs() {
   const submit = document.getElementById("add");
   const devName = document.getElementById("name");
 
-  submit.addEventListener("click", function(ev) {
+  submit.addEventListener("click", function (ev) {
     console.log("click");
     ev.preventDefault();
     if (devName.value !== "") {
-      createInputs();
+      createTec();
     } else {
       alert("Preencha o nome antes!");
     }
-    
+
   });
 }
 
-function registerDev(dev) {
-  //criar função que cria o objeto dev, que na função execute() será salvo num array de dev's.
+function registerDev() {
+  const name = document.getElementById("name").value.trim();
+  if (!name) {
+    alert("Por favor, insira um nome.");
+    return;
+  }
+
+  const techs = [];
+  document.querySelectorAll("fieldset").forEach(fieldset => {
+    const techNameInput = fieldset.querySelector("input[type='text']");
+    const techName = techNameInput ? techNameInput.value.trim() : "";
+    if (!techName) return;
+
+    const selectedLevel = fieldset.querySelector("input[type='radio']:checked");
+    const techLevel = selectedLevel ? selectedLevel.value : "Não informado";
+
+    techs.push({ name: techName, level: techLevel });
+  });
+
+  const dev = {
+    name,
+    technologies: techs
+  };
+
+  console.log(dev);
 }
 
-function createInputs() {
-  const uniqueId = Date.now();
+function createFieldset(uniqueId) {
+  const fieldset = document.createElement("fieldset");
 
   const tecNameLabel = document.createElement("label");
   tecNameLabel.for = `tec__name_${uniqueId}`;
@@ -46,28 +69,43 @@ function createInputs() {
   tecName.type = "text";
   tecName.id = `tec__name_${uniqueId}`;
 
-  const fieldSet = document.createElement("fieldset");
-
   const legend = document.createElement("legend");
   legend.innerText = "Tecnologia";
+
+  const removeTecButton = document.createElement("button");
+  removeTecButton.innerText = "Remover";
+
+  removeTecButton.addEventListener("click", function (ev) {
+    ev.preventDefault();
+    this.parentElement.remove();
+  });
+
+  fieldset.appendChild(legend);
+  fieldset.appendChild(tecNameLabel);
+  fieldset.appendChild(tecName);
+  fieldset.appendChild(removeTecButton);
+
+  return fieldset
+}
+
+function createTec() {
+  const uniqueId = Date.now();
+
+  const fieldset = createFieldset(uniqueId);
 
   const form = document.querySelector(".register__section > form");
 
   const registerDevButton = document.createElement("button");
   registerDevButton.innerText = "Registrar Dev";
   registerDevButton.id = "register__dev__button";
-  registerDevButton.addEventListener("click", function(ev) {
+  registerDevButton.addEventListener("click", function (ev) {
     ev.preventDefault();
-    registerDev(dev);
+    registerDev();
   });
 
   if (!document.getElementById("register__dev__button")) {
     form.appendChild(registerDevButton);
   }
-
-  fieldSet.appendChild(legend);
-  fieldSet.appendChild(tecNameLabel);
-  fieldSet.appendChild(tecName);
 
   const levels = ["0-2 anos", "3-4 anos", "5+ anos"];
 
@@ -76,7 +114,7 @@ function createInputs() {
 
     const radio = document.createElement("input");
     radio.type = "radio";
-    radio.name = `tec_level_${uniqueId}`; // Nome único
+    radio.name = `tec_level_${uniqueId}`;
     radio.id = `level_${uniqueId}_${index}`;
     radio.value = level.toLowerCase();
 
@@ -86,19 +124,10 @@ function createInputs() {
 
     radioContainer.appendChild(radio);
     radioContainer.appendChild(label);
-    fieldSet.appendChild(radioContainer);
+    fieldset.appendChild(radioContainer);
   });
 
-  const removeTecButton = document.createElement("button");
-  removeTecButton.innerText = "Remover";
-
-  removeTecButton.addEventListener("click", function(ev) {
-    ev.preventDefault();
-    this.parentElement.remove();
-  });
-
-  fieldSet.appendChild(removeTecButton);
-  form.appendChild(fieldSet);
+  form.appendChild(fieldset);
 }
 
 function execute() {
