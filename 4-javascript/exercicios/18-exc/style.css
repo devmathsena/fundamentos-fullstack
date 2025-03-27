@@ -164,6 +164,7 @@ input {
 
 .success {
   border-color: var(--primary-color) !important;
-  color: var(--primary-color) !important;
+  background-color: var(--primary-color) !important; 
+  color: var(--bg-color) !important;
   box-shadow: var(--glow) !important;
 }
