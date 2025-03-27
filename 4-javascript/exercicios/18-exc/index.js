@@ -45,7 +45,7 @@ function caculate() {
 
 document.getElementById('copyToClipboard').addEventListener('click', function (ev) {
   const button = ev.currentTarget;
-  if (button.innerText === 'Copy') {
+  if (button.innerText === 'COPY') {
     button.innerText = 'Copied'
     button.classList.add('success')
     navigator.clipboard.writeText(resultInput.value)
@@ -56,17 +56,22 @@ document.getElementById('copyToClipboard').addEventListener('click', function (e
 })
 
 document.getElementById('themeSwitcher').addEventListener('click', function () {
+  const root = document.documentElement;
+  const main = document.querySelector('main');
+
   if (main.dataset.theme === 'dark') {
-    root.style.setProperty('--bg-color', '#f5f1f9')
-    root.style.setProperty('--border-color', '#aaa')
-    root.style.setProperty('--font-color', '#212529')
-    root.style.setProperty('--primary-color', '#26834a')
-    main.dataset.theme = 'light'
+    root.style.setProperty('--bg-color', '#e0f7fa');
+    root.style.setProperty('--border-color', '#00c0ce');
+    root.style.setProperty('--font-color', '#00afa4');
+    root.style.setProperty('--primary-color', '#00afa4');
+    root.style.setProperty('--glow', '0 0 2px var(--primary-color), 0 0 5px var(--primary-color)');
+    main.dataset.theme = 'light';
   } else {
-    root.style.setProperty('--bg-color', '#212529')
-    root.style.setProperty('--border-color', '#666')
-    root.style.setProperty('--font-color', '#f5f1f9')
-    root.style.setProperty('--primary-color', '#4dff91')
-    main.dataset.theme = 'dark'
+    root.style.setProperty('--bg-color', '#0a0f1e');
+    root.style.setProperty('--border-color', '#00eaff');
+    root.style.setProperty('--font-color', '#00eaff');
+    root.style.setProperty('--primary-color', '#00fff2');
+    root.style.setProperty('--glow', '0 0 2px var(--primary-color), 0 0 5px var(--primary-color)');
+    main.dataset.theme = 'dark';
   }
-})
+});
