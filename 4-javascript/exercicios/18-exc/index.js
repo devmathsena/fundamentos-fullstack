@@ -31,6 +31,9 @@ input.addEventListener('keydown', function (ev) {
   }
 })
 
+document.getElementById('equal').addEventListener('click', caculate)
+
 function caculate() {
-  console.log("Calculado")
+  const result = eval(input.value)
+  resultInput.value = result
 }
