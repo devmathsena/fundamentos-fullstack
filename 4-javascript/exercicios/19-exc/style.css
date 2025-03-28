@@ -12,3 +12,7 @@ main {
     padding: 5rem;
     height: 40rem;
 }
+
+#gameDisplay {
+    border-spacing: 1rem;
+}
