@@ -16,3 +16,10 @@ main {
 #gameDisplay {
     border-spacing: 1rem;
 }
+
+#gameDisplay td {
+    width: 8rem;
+    height: 8rem;
+    background-color: aqua;
+    margin: 20rem;
+}
