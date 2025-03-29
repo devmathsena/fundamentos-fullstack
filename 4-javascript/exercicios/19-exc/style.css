@@ -40,20 +40,19 @@ main {
     align-items: center;
     width: 70%;
     height: 70%;
-    background-color: black; /* Cor do círculo */
-    border-radius: 50%;
+    background-color: black;
     margin: auto;
 }
 
 .x::before {
-    content: "\2716"; /* Código Unicode para um X */
+    content: "\2716"; 
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
     height: 80%;
     font-size: 7em;
-    color: red; /* Cor do X */
+    color: red;
     margin: auto;
 }
 
