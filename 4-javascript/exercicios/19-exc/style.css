@@ -32,3 +32,28 @@ main {
     height: 10rem;
     background-color: rgb(0, 175, 175);
 }
+
+.circle::before {
+    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 70%;
+    background-color: black; /* Cor do círculo */
+    border-radius: 50%;
+    margin: auto;
+}
+
+.x::before {
+    content: "\2716"; /* Código Unicode para um X */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    font-size: 7em;
+    color: red; /* Cor do X */
+    margin: auto;
+}
+

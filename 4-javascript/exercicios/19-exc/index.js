@@ -12,3 +12,21 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 - Em caso de empate, uma mensagem de empate deve ser mostrada na tela;
 - Deve ser possível reiniciar o jogo para jogar novamente.
 */
+
+const tableGameDisplay = document.getElementById('gameDisplay')
+const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
+let piece = 'circle'
+
+tdGameDisplay.forEach(function (td) {
+  td.addEventListener('click', function () {
+    if (piece === 'x') {
+      td.classList.remove('circle');
+      td.classList.add('x');
+      piece = 'circle';
+    } else {
+      td.classList.remove('x');
+      td.classList.add('circle');
+      piece = 'x';
+    }
+  });
+});
