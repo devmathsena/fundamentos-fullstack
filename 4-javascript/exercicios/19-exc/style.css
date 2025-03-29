@@ -45,5 +45,15 @@ main {
     margin: auto;
 }
 
-
+.x::before {
+    content: "\2716"; /* Código Unicode para um X */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    font-size: 7em;
+    color: red; /* Cor do X */
+    margin: auto;
+}
 
