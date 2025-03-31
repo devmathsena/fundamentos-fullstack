@@ -41,6 +41,7 @@ main {
     width: 70%;
     height: 70%;
     background-color: black;
+    border-radius: 50%;
     margin: auto;
 }
 
@@ -51,7 +52,7 @@ main {
     align-items: center;
     width: 80%;
     height: 80%;
-    font-size: 7em;
+    font-size: 6em;
     color: red;
     margin: auto;
 }
