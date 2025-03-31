@@ -13,6 +13,40 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 - Deve ser possível reiniciar o jogo para jogar novamente.
 */
 
+function checkWinner(matrix) {
+
+  for (let index = 0; index < 3; index++) {
+    if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
+      return matrix[index][0]; // Retorna o vencedor ('X' ou 'O')
+    }
+  }
+
+  // Verifica colunas
+  for (let index = 0; index < 3; index++) {
+    if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
+      return matrix[0][index];
+    }
+  }
+
+  // Verifica diagonal principal
+  if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
+    return matrix[0][0];
+  }
+
+  // Verifica diagonal secundária
+  if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
+    return matrix[0][2];
+  }
+
+  const draw = matrix.flat().every(celula => celula !== "");
+  if(draw) {
+    return "empate"
+  }
+
+  // Se ninguém ganhou
+  return null;
+}
+
 function clickEvent(tdGameDisplay) {
   tdGameDisplay.forEach(function (td) {
     td.addEventListener('click', function () {
@@ -50,7 +84,7 @@ function changeEvent(tdGameDisplay, matrix) {
   tdGameDisplay.forEach(function (td) {
     td.addEventListener('click', function () {
       matrix = tableToMatrix(trGameDisplay)
-      console.log(matrix);
+      console.log(checkWinner(matrix));
     })
   })
 }
