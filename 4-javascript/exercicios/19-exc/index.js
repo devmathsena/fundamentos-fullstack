@@ -39,7 +39,7 @@ function checkWinner(matrix) {
   }
 
   const draw = matrix.flat().every(celula => celula !== "");
-  if(draw) {
+  if (draw) {
     return "empate"
   }
 
@@ -73,7 +73,6 @@ function tableToMatrix(trGameDisplay) {
 
   trGameDisplay.forEach((tr, index) => {
     const cells = tr.querySelectorAll("td");
-
     matrix[index] = Array.from(cells).map(td => td.className);
   });
 
