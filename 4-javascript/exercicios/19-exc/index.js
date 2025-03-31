@@ -46,6 +46,7 @@ function tableToMatrix(trGameDisplay) {
   return matrix
 }
 
+//ajustar detecção de mudanças
 function changeEvent(tdGameDisplay) {
   console.log("w");
   tdGameDisplay.forEach(function (td) {
@@ -55,6 +56,7 @@ function changeEvent(tdGameDisplay) {
   })
 }
 
+//ajustar detecção de mudanças
 function execute(trGameDisplay, tdGameDisplay) {
   clickEvent(tdGameDisplay)
   let matrix = tableToMatrix(trGameDisplay)
