@@ -13,26 +13,67 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 - Deve ser possível reiniciar o jogo para jogar novamente.
 */
 
-const tableGameDisplay = document.getElementById('gameDisplay')
+function clickEvent(tdGameDisplay) {
+  tdGameDisplay.forEach(function (td) {
+    td.addEventListener('click', function () {
+      if (!td.classList.value) {
+        if (piece === 'x') {
+          td.classList.remove('circle');
+          td.classList.add('x');
+          piece = 'circle';
+          return
+        }
+        if (piece === 'circle') {
+          td.classList.remove('x');
+          td.classList.add('circle');
+          piece = 'x';
+          return
+        }
+      }
+    });
+  });
+}
+
+function tableToMatrix(trGameDisplay) {
+  let matrix = [];
+
+  trGameDisplay.forEach((tr, index) => {
+    const cells = tr.querySelectorAll("td");
+
+    matrix[index] = Array.from(cells).map(td => td.className);
+  });
+
+  return matrix
+}
+
+//ajustar detecção de mudanças
+function changeEvent(tdGameDisplay) {
+  console.log("w");
+  tdGameDisplay.forEach(function (td) {
+    td.addEventListener('change', function () {
+      console.log("td");
+    })
+  })
+}
+
+//ajustar detecção de mudanças
+function execute(trGameDisplay, tdGameDisplay) {
+  clickEvent(tdGameDisplay)
+  let matrix = tableToMatrix(trGameDisplay)
+  trGameDisplay.forEach(function(tr){
+    tr.addEventListener('change', function() {
+      changeEvent(tdGameDisplay)
+    })
+  })
+  console.log(matrix);
+}
+
+const trGameDisplay = document.querySelectorAll('#gameDisplay tr')
 const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
 let piece = 'circle'
 
-tdGameDisplay.forEach(function (td) {
-  td.addEventListener('click', function () {
-    if (!td.classList.value){
-      if (piece === 'x') {
-        td.classList.remove('circle');
-        td.classList.add('x');
-        piece = 'circle';
-        return
-      }
-      if (piece === 'circle') {
-        td.classList.remove('x');
-        td.classList.add('circle');
-        piece = 'x';
-        return
-      }
-    }
-    
-  });
-});
+
+execute(trGameDisplay, tdGameDisplay)
+
+
+
