@@ -13,26 +13,36 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 - Deve ser possível reiniciar o jogo para jogar novamente.
 */
 
+function clickEvent() {
+  tdGameDisplay.forEach(function (td) {
+    td.addEventListener('click', function () {
+      if (!td.classList.value){
+        if (piece === 'x') {
+          td.classList.remove('circle');
+          td.classList.add('x');
+          piece = 'circle';
+          return
+        }
+        if (piece === 'circle') {
+          td.classList.remove('x');
+          td.classList.add('circle');
+          piece = 'x';
+          return
+        }
+      }
+    });
+  });
+}
+
+function execute() {
+  clickEvent()
+}
+
 const tableGameDisplay = document.getElementById('gameDisplay')
 const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
 let piece = 'circle'
 
-tdGameDisplay.forEach(function (td) {
-  td.addEventListener('click', function () {
-    if (!td.classList.value){
-      if (piece === 'x') {
-        td.classList.remove('circle');
-        td.classList.add('x');
-        piece = 'circle';
-        return
-      }
-      if (piece === 'circle') {
-        td.classList.remove('x');
-        td.classList.add('circle');
-        piece = 'x';
-        return
-      }
-    }
-    
-  });
-});
+execute()
+
+
+
