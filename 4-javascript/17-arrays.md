@@ -54,10 +54,4 @@ Os Arrays no JavaScript oferecem **diversas funções** para facilitar a manipul
 
 ---
 
-## 🔥 Praticando no VS Code  
-
-No final, a aula demonstra **testes práticos no VS Code**, criando um arquivo `Array.js` e manipulando arrays no console do navegador. Essa prática ajuda a entender melhor o comportamento dos Arrays na linguagem.  
-
----
-
 🎯 **Conclusão:** Os Arrays são uma das estruturas mais poderosas do JavaScript, oferecendo flexibilidade e eficiência no armazenamento de dados. Essa foi apenas uma introdução, e ainda há muito para explorar! 🚀  

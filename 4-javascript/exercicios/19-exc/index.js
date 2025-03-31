@@ -19,14 +19,20 @@ let piece = 'circle'
 
 tdGameDisplay.forEach(function (td) {
   td.addEventListener('click', function () {
-    if (piece === 'x') {
-      td.classList.remove('circle');
-      td.classList.add('x');
-      piece = 'circle';
-    } else {
-      td.classList.remove('x');
-      td.classList.add('circle');
-      piece = 'x';
+    if (!td.classList.value){
+      if (piece === 'x') {
+        td.classList.remove('circle');
+        td.classList.add('x');
+        piece = 'circle';
+        return
+      }
+      if (piece === 'circle') {
+        td.classList.remove('x');
+        td.classList.add('circle');
+        piece = 'x';
+        return
+      }
     }
+    
   });
 });
