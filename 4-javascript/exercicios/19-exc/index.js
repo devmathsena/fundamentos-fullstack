@@ -13,10 +13,24 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 - Deve ser possível reiniciar o jogo para jogar novamente.
 */
 
+function handleClick() {
+  matrix = tableToMatrix(trGameDisplay);
+  console.log(checkWinner(matrix, tdGameDisplay));
+}
+
+function changeEvent(tdGameDisplay) {
+  tdGameDisplay.forEach(td => td.addEventListener('click', handleClick));
+}
+
+function removeChangeEvent(tdGameDisplay) {
+  tdGameDisplay.forEach(td => td.removeEventListener('click', handleClick));
+}
+
 function checkWinner(matrix) {
 
   for (let index = 0; index < 3; index++) {
     if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
+      removeChangeEvent(tdGameDisplay)
       return matrix[index][0]; // Retorna o vencedor ('X' ou 'O')
     }
   }
@@ -24,22 +38,26 @@ function checkWinner(matrix) {
   // Verifica colunas
   for (let index = 0; index < 3; index++) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
+      removeChangeEvent(tdGameDisplay)
       return matrix[0][index];
     }
   }
 
   // Verifica diagonal principal
   if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
+    removeChangeEvent(tdGameDisplay)
     return matrix[0][0];
   }
 
   // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
+    removeChangeEvent(tdGameDisplay)
     return matrix[0][2];
   }
 
   const draw = matrix.flat().every(celula => celula !== "");
   if (draw) {
+    removeChangeEvent(tdGameDisplay)
     return "empate"
   }
 
@@ -77,15 +95,6 @@ function tableToMatrix(trGameDisplay) {
   });
 
   return matrix
-}
-
-function changeEvent(tdGameDisplay, matrix) {
-  tdGameDisplay.forEach(function (td) {
-    td.addEventListener('click', function () {
-      matrix = tableToMatrix(trGameDisplay)
-      console.log(checkWinner(matrix));
-    })
-  })
 }
 
 function execute(trGameDisplay, tdGameDisplay) {
