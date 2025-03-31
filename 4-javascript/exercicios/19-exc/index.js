@@ -46,26 +46,19 @@ function tableToMatrix(trGameDisplay) {
   return matrix
 }
 
-//ajustar detecção de mudanças
-function changeEvent(tdGameDisplay) {
-  console.log("w");
+function changeEvent(tdGameDisplay, matrix) {
   tdGameDisplay.forEach(function (td) {
-    td.addEventListener('change', function () {
-      console.log("td");
+    td.addEventListener('click', function () {
+      matrix = tableToMatrix(trGameDisplay)
+      console.log(matrix);
     })
   })
 }
 
-//ajustar detecção de mudanças
 function execute(trGameDisplay, tdGameDisplay) {
-  clickEvent(tdGameDisplay)
   let matrix = tableToMatrix(trGameDisplay)
-  trGameDisplay.forEach(function(tr){
-    tr.addEventListener('change', function() {
-      changeEvent(tdGameDisplay)
-    })
-  })
-  console.log(matrix);
+  clickEvent(tdGameDisplay)
+  changeEvent(tdGameDisplay, matrix)
 }
 
 const trGameDisplay = document.querySelectorAll('#gameDisplay tr')
