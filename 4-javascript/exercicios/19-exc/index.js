@@ -13,10 +13,10 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 - Deve ser possível reiniciar o jogo para jogar novamente.
 */
 
-function clickEvent() {
+function clickEvent(tdGameDisplay) {
   tdGameDisplay.forEach(function (td) {
     td.addEventListener('click', function () {
-      if (!td.classList.value){
+      if (!td.classList.value) {
         if (piece === 'x') {
           td.classList.remove('circle');
           td.classList.add('x');
@@ -34,15 +34,44 @@ function clickEvent() {
   });
 }
 
-function execute() {
-  clickEvent()
+function tableToMatrix(trGameDisplay) {
+  let matrix = [];
+
+  trGameDisplay.forEach((tr, index) => {
+    const cells = tr.querySelectorAll("td");
+
+    matrix[index] = Array.from(cells).map(td => td.className);
+  });
+
+  return matrix
 }
 
-const tableGameDisplay = document.getElementById('gameDisplay')
+function changeEvent(tdGameDisplay) {
+  console.log("w");
+  tdGameDisplay.forEach(function (td) {
+    td.addEventListener('change', function () {
+      console.log("td");
+    })
+  })
+}
+
+function execute(trGameDisplay, tdGameDisplay) {
+  clickEvent(tdGameDisplay)
+  let matrix = tableToMatrix(trGameDisplay)
+  trGameDisplay.forEach(function(tr){
+    tr.addEventListener('change', function() {
+      changeEvent(tdGameDisplay)
+    })
+  })
+  console.log(matrix);
+}
+
+const trGameDisplay = document.querySelectorAll('#gameDisplay tr')
 const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
 let piece = 'circle'
 
-execute()
+
+execute(trGameDisplay, tdGameDisplay)
 
 
 
