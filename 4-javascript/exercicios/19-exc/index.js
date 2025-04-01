@@ -15,7 +15,7 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 
 function handleClickMatrix() {
   matrix = tableToMatrix(trGameDisplay);
-  const winner = checkWinner(matrix, tdGameDisplay)
+  checkWinner(matrix, tdGameDisplay)
 }
 
 function changeEvent(tdGameDisplay) {
@@ -26,9 +26,8 @@ function removeChangeEvent(tdGameDisplay) {
   tdGameDisplay.forEach(td => td.removeEventListener('click', handleClickMatrix));
 }
 
-// Função de callback nomeada
 function handleClickVisual(event) {
-  let td = event.target; // Obtém o elemento que disparou o evento
+  let td = event.target;
   if (!td.classList.value) {
       if (piece === 'x') {
           td.classList.remove('circle');
@@ -47,14 +46,13 @@ function handleClickVisual(event) {
 
 function clickEvent(tdGameDisplay) {
   tdGameDisplay.forEach(function (td) {
-      td.addEventListener('click', handleClickVisual); // Usa a função nomeada diretamente
+      td.addEventListener('click', handleClickVisual);
   });
 }
 
-// Função para remover o evento de click
 function removeClickEvent(tdGameDisplay) {
   tdGameDisplay.forEach(function (td) {
-      td.removeEventListener('click', handleClickVisual); // Remove o mesmo evento
+      td.removeEventListener('click', handleClickVisual);
   });
 }
 
@@ -64,7 +62,7 @@ function checkWinner(matrix) {
     if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
-      return matrix[index][0]; // Retorna o vencedor ('X' ou 'O')
+      console.log(`O vencedor é o: ${matrix[index][0]}`);
     }
   }
 
@@ -73,7 +71,7 @@ function checkWinner(matrix) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
-      return matrix[0][index];
+      console.log(`O vencedor é o: ${matrix[0][index]}`);
     }
   }
 
@@ -81,21 +79,21 @@ function checkWinner(matrix) {
   if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
-    return matrix[0][0];
+    console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
 
   // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
-    return matrix[0][2];
+    console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
 
   const draw = matrix.flat().every(celula => celula !== "");
   if (draw) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
-    return "empate"
+    console.log('Empate!'); 
   }
 
   // Se ninguém ganhou
