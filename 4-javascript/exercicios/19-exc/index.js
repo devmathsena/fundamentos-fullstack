@@ -15,7 +15,7 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 
 function handleClickMatrix() {
   matrix = tableToMatrix(trGameDisplay);
-  console.log(checkWinner(matrix, tdGameDisplay));
+  const winner = checkWinner(matrix, tdGameDisplay)
 }
 
 function changeEvent(tdGameDisplay) {
@@ -53,7 +53,6 @@ function clickEvent(tdGameDisplay) {
 
 // Função para remover o evento de click
 function removeClickEvent(tdGameDisplay) {
-  console.log('removeClickEvent');
   tdGameDisplay.forEach(function (td) {
       td.removeEventListener('click', handleClickVisual); // Remove o mesmo evento
   });
