@@ -62,32 +62,63 @@ function checkWinner(matrix, tdGameDisplay) {
     if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
+      trGameDisplay[index].classList.add('crossed-horizontal')
       console.log(`O vencedor é o: ${matrix[index][0]}`);
-      //CORRIGIR LOCALIZAÇÃO DE TR PARA EFETUAR O RISCO
-      tdGameDisplay[index].parentElement.classList.add('crossed')
     }
   }
 
   // Verifica colunas
   for (let index = 0; index < 3; index++) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
+      
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
+
+      if (index === 0) {
+        tdGameDisplay[index].classList.add('crossed-vertical-0')
+        tdGameDisplay[index + 3].classList.add('crossed-vertical-0')
+        tdGameDisplay[index + 6].classList.add('crossed-vertical-0')
+      }
+
+      if (index === 1) {
+        tdGameDisplay[index].classList.add('crossed-vertical-3')
+        tdGameDisplay[index + 3].classList.add('crossed-vertical-3')
+        tdGameDisplay[index + 6].classList.add('crossed-vertical-3')
+      }
+
+      if (index === 2) {
+        tdGameDisplay[index].classList.add('crossed-vertical-6')
+        tdGameDisplay[index + 3].classList.add('crossed-vertical-6')
+        tdGameDisplay[index + 6].classList.add('crossed-vertical-6')
+      }
+
       console.log(`O vencedor é o: ${matrix[0][index]}`);
     }
   }
 
   // Verifica diagonal principal
   if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
+
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
+
+    tdGameDisplay[0].classList.add('crossed-primary-diagonal-0')
+    tdGameDisplay[4].classList.add('crossed-primary-diagonal-4')
+    tdGameDisplay[8].classList.add('crossed-primary-diagonal-8')
+
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
 
   // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
+    
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
+
+    tdGameDisplay[2].classList.add('crossed-secondary-diagonal-2')
+    tdGameDisplay[4].classList.add('crossed-secondary-diagonal-4')
+    tdGameDisplay[6].classList.add('crossed-secondary-diagonal-6')
+
     console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
 
@@ -116,7 +147,7 @@ function tableToMatrix(trGameDisplay) {
 
 function resetEvent() {
   const resetButton = document.getElementById('resetButton')
-  resetButton.addEventListener('click', function() {
+  resetButton.addEventListener('click', function () {
     window.location.reload();
   })
 }
@@ -126,14 +157,13 @@ function execute(trGameDisplay, tdGameDisplay) {
   resetEvent()
   clickEvent(tdGameDisplay)
   changeEvent(tdGameDisplay, matrix)
-  
+
 }
 
 const trGameDisplay = document.querySelectorAll('#gameDisplay tr')
 const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
 let piece = 'circle'
 
-console.log(tdGameDisplay);
 execute(trGameDisplay, tdGameDisplay)
 
 
