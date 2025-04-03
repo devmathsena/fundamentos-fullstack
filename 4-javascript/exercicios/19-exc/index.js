@@ -70,6 +70,7 @@ function checkWinner(matrix, tdGameDisplay) {
   // Verifica colunas
   for (let index = 0; index < 3; index++) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
+      
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
 
@@ -97,15 +98,27 @@ function checkWinner(matrix, tdGameDisplay) {
 
   // Verifica diagonal principal
   if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
+
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
+
+    tdGameDisplay[0].classList.add('crossed-primary-diagonal-0')
+    tdGameDisplay[4].classList.add('crossed-primary-diagonal-4')
+    tdGameDisplay[8].classList.add('crossed-primary-diagonal-8')
+
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
 
   // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
+    
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
+
+    tdGameDisplay[2].classList.add('crossed-secondary-diagonal-2')
+    tdGameDisplay[4].classList.add('crossed-secondary-diagonal-4')
+    tdGameDisplay[6].classList.add('crossed-secondary-diagonal-6')
+
     console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
 
