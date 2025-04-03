@@ -32,8 +32,6 @@ main {
 }
 
 #gameDisplay td:hover {
-    width: 10rem;
-    height: 10rem;
     background-color: rgb(0, 175, 175);
 }
 
@@ -74,12 +72,79 @@ main {
     content: "";
     position: absolute;
     top: -10px; /* Ajusta para cobrir toda a altura */
-    left:85%;
+    left: 85%;
     width: 4px; /* Espessura do traço agora na largura */
     height: calc(100% + 20px); /* A altura agora cobre o elemento */
     background: black; /* Cor do traço */
     transform: translateX(-50%);
 }
+
+.crossed-primary-diagonal-0::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    left: 17%;
+    width: 1%;
+    height: 162%;
+    background: black;
+    transform: rotate(-45deg);
+}
+
+.crossed-primary-diagonal-4::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    left: 51.5%;
+    width: 1%;
+    height: 162%;
+    background: black;
+    transform: rotate(-45deg);
+}
+
+.crossed-primary-diagonal-8::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    left: 84.855%;
+    width: 1%;
+    height: 153%;
+    background: black;
+    transform: rotate(-45deg);
+}
+
+.crossed-secondary-diagonal-2::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    left: 84%;
+    width: 1%;
+    height: 162%;
+    background: black;
+    transform: rotate(45deg);
+}
+
+.crossed-secondary-diagonal-4::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    left: 49.5%;
+    width: 1%;
+    height: 162%;
+    background: black;
+    transform: rotate(45deg);
+}
+
+.crossed-secondary-diagonal-6::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    left: 14.8%;
+    width: 1%;
+    height: 162%;
+    background: black;
+    transform: rotate(45deg);
+}
+
 
 .circle::before {
     content: "";
