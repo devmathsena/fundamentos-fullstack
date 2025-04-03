@@ -56,13 +56,41 @@ function removeClickEvent(tdGameDisplay) {
   });
 }
 
+function launchConfetti() {
+  for (let i = 0; i < 50; i++) {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
+    document.body.appendChild(confetti);
+
+    // Tempo total antes de iniciar o fade-out (queda + tempo extra)
+    let fadeOutTime = parseFloat(confetti.style.animationDuration) * 1000 + 500;
+
+    // Após a queda, iniciar fade-out
+    setTimeout(() => {
+      confetti.style.opacity = "0"; // Reduz opacidade suavemente
+    }, fadeOutTime);
+
+    // Remover o confete após o fade-out terminar
+    setTimeout(() => confetti.remove(), fadeOutTime + 1000);
+  }
+}
+
 function checkWinner(matrix, tdGameDisplay) {
 
   for (let index = 0; index < 3; index++) {
     if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
+
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
+
       trGameDisplay[index].classList.add('crossed-horizontal')
+
+      setTimeout(launchConfetti, 1000);
+      setTimeout(launchConfetti, 2000);
+      setTimeout(launchConfetti, 3000);
+
       console.log(`O vencedor é o: ${matrix[index][0]}`);
     }
   }
@@ -70,7 +98,7 @@ function checkWinner(matrix, tdGameDisplay) {
   // Verifica colunas
   for (let index = 0; index < 3; index++) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
-      
+
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
 
@@ -78,18 +106,30 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index].classList.add('crossed-vertical-0')
         tdGameDisplay[index + 3].classList.add('crossed-vertical-0')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-0')
+
+        setTimeout(launchConfetti, 1000);
+        setTimeout(launchConfetti, 2000);
+        setTimeout(launchConfetti, 3000);
       }
 
       if (index === 1) {
         tdGameDisplay[index].classList.add('crossed-vertical-3')
         tdGameDisplay[index + 3].classList.add('crossed-vertical-3')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-3')
+
+        setTimeout(launchConfetti, 1000);
+        setTimeout(launchConfetti, 2000);
+        setTimeout(launchConfetti, 3000);
       }
 
       if (index === 2) {
         tdGameDisplay[index].classList.add('crossed-vertical-6')
         tdGameDisplay[index + 3].classList.add('crossed-vertical-6')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-6')
+
+        setTimeout(launchConfetti, 1000);
+        setTimeout(launchConfetti, 2000);
+        setTimeout(launchConfetti, 3000);
       }
 
       console.log(`O vencedor é o: ${matrix[0][index]}`);
@@ -106,18 +146,26 @@ function checkWinner(matrix, tdGameDisplay) {
     tdGameDisplay[4].classList.add('crossed-primary-diagonal-4')
     tdGameDisplay[8].classList.add('crossed-primary-diagonal-8')
 
+    setTimeout(launchConfetti, 1000);
+    setTimeout(launchConfetti, 2000);
+    setTimeout(launchConfetti, 3000);
+
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
 
   // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
-    
+
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
 
     tdGameDisplay[2].classList.add('crossed-secondary-diagonal-2')
     tdGameDisplay[4].classList.add('crossed-secondary-diagonal-4')
     tdGameDisplay[6].classList.add('crossed-secondary-diagonal-6')
+
+    setTimeout(launchConfetti, 1000);
+    setTimeout(launchConfetti, 2000);
+    setTimeout(launchConfetti, 3000);
 
     console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
