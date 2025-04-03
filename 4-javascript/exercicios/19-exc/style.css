@@ -18,6 +18,21 @@ main {
     transition: 300ms;
 }
 
+#gameDisplay tr {
+    position: relative;
+}
+
+.crossed::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: 4px; /* Espessura do traço */
+    background: black; /* Cor do traço */
+    transform: translateY(-50%);
+}
+
 #gameDisplay td {
     width: 8rem;
     height: 8rem;

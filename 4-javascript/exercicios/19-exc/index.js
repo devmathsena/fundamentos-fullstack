@@ -29,40 +29,42 @@ function removeChangeEvent(tdGameDisplay) {
 function handleClickVisual(event) {
   let td = event.target;
   if (!td.classList.value) {
-      if (piece === 'x') {
-          td.classList.remove('circle');
-          td.classList.add('x');
-          piece = 'circle';
-          return;
-      }
-      if (piece === 'circle') {
-          td.classList.remove('x');
-          td.classList.add('circle');
-          piece = 'x';
-          return;
-      }
+    if (piece === 'x') {
+      td.classList.remove('circle');
+      td.classList.add('x');
+      piece = 'circle';
+      return;
+    }
+    if (piece === 'circle') {
+      td.classList.remove('x');
+      td.classList.add('circle');
+      piece = 'x';
+      return;
+    }
   }
 }
 
 function clickEvent(tdGameDisplay) {
   tdGameDisplay.forEach(function (td) {
-      td.addEventListener('click', handleClickVisual);
+    td.addEventListener('click', handleClickVisual);
   });
 }
 
 function removeClickEvent(tdGameDisplay) {
   tdGameDisplay.forEach(function (td) {
-      td.removeEventListener('click', handleClickVisual);
+    td.removeEventListener('click', handleClickVisual);
   });
 }
 
-function checkWinner(matrix) {
+function checkWinner(matrix, tdGameDisplay) {
 
   for (let index = 0; index < 3; index++) {
     if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
       console.log(`O vencedor é o: ${matrix[index][0]}`);
+      //CORRIGIR LOCALIZAÇÃO DE TR PARA EFETUAR O RISCO
+      tdGameDisplay[index].parentElement.classList.add('crossed')
     }
   }
 
@@ -89,11 +91,12 @@ function checkWinner(matrix) {
     console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
 
+  // CORRIGIR CONSIDERAÇÃO DE EMPATE - VITORIA COM TDS PEÇAS PREENCHIDAS INFORMA EMPATE TBM
   const draw = matrix.flat().every(celula => celula !== "");
   if (draw) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
-    console.log('Empate!'); 
+    console.log('Empate!');
   }
 
   // Se ninguém ganhou
@@ -111,17 +114,26 @@ function tableToMatrix(trGameDisplay) {
   return matrix
 }
 
+function resetEvent() {
+  const resetButton = document.getElementById('resetButton')
+  resetButton.addEventListener('click', function() {
+    window.location.reload();
+  })
+}
+
 function execute(trGameDisplay, tdGameDisplay) {
   let matrix = tableToMatrix(trGameDisplay)
+  resetEvent()
   clickEvent(tdGameDisplay)
   changeEvent(tdGameDisplay, matrix)
+  
 }
 
 const trGameDisplay = document.querySelectorAll('#gameDisplay tr')
 const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
 let piece = 'circle'
 
-
+console.log(tdGameDisplay);
 execute(trGameDisplay, tdGameDisplay)
 
 
