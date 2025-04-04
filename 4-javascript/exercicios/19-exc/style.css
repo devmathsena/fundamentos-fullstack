@@ -4,13 +4,70 @@
     box-sizing: border-box;
 }
 
+body {
+    background: #e0f7f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #playersNames {
+    background-color: #a0e7e5;
+    border: 2px solid #64ccc5;
+    border-radius: 16px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  #playersNames label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #055a5b;
+  }
+
+  #playersNames input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #64ccc5;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  #playersNames input:focus {
+    border-color: #00b4b3;
+    background-color: #f0ffff;
+  }
+
+  #startButton, #resetButton {
+    margin-top: 25px;
+    padding: 12px 20px;
+    background-color: #00b4b3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  #startButton:hover, #resetButton:hover {
+    background-color: #029e9c;
+    transform: scale(1.05);
+  }
+
 main {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding: 5rem;
     height: 40rem;
+    column-gap:4rem;
 }
 
 #gameDisplay {
