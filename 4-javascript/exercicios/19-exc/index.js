@@ -208,11 +208,34 @@ function execute(trGameDisplay, tdGameDisplay) {
 
 }
 
+let piece = 'circle'
+const player1 = document.getElementById('player1')
+const player2 = document.getElementById('player2')
 const trGameDisplay = document.querySelectorAll('#gameDisplay tr')
 const tdGameDisplay = document.querySelectorAll('#gameDisplay td')
-let piece = 'circle'
+const startButton = document.getElementById('startButton')
+let alert = document.getElementById("alert");
 
-execute(trGameDisplay, tdGameDisplay)
+
+startButton.addEventListener('click', function () {
+  if (player1.value !== '' && player2.value !== '') {
+    execute(trGameDisplay, tdGameDisplay)
+  } else {
+    alert.innerText = "Preencha os nomes dos players!";
+    alert.style.display = "block";
+    alert.style.opacity = "1";
+
+    // Esconde o alert suavemente após 3 segundos
+    setTimeout(() => {
+      alert.style.opacity = "0";
+
+      // Aguarda a transição do fade-out antes de esconder o elemento
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 1000); // Tempo igual ao do transition (1s)
+    }, 3000);
+  }
+})
 
 
 
