@@ -11,39 +11,50 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
+}
 
-  #playersNames {
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem;
+    height: 40rem;
+    column-gap: 4rem;
+}
+
+#playersNames {
     background-color: #a0e7e5;
     border: 2px solid #64ccc5;
     border-radius: 16px;
     padding: 30px 40px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  #playersNames label {
+#playersNames label {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
     color: #055a5b;
-  }
+}
 
-  #playersNames input {
+#playersNames input {
     width: 100%;
     padding: 10px;
     border: 2px solid #64ccc5;
     border-radius: 8px;
     outline: none;
     transition: border-color 0.3s;
-  }
+}
 
-  #playersNames input:focus {
+#playersNames input:focus {
     border-color: #00b4b3;
     background-color: #f0ffff;
-  }
+}
 
-  #startButton, #resetButton {
+#startButton,
+#resetButton {
     margin-top: 25px;
     padding: 12px 20px;
     background-color: #00b4b3;
@@ -53,21 +64,25 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-  }
+}
 
-  #startButton:hover, #resetButton:hover {
+#startButton:hover,
+#resetButton:hover {
     background-color: #029e9c;
     transform: scale(1.05);
-  }
+}
 
-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5rem;
-    height: 40rem;
-    column-gap:4rem;
+#alert {
+    display: none;
+    opacity: 0;
+    color: white;
+    background-color: rgb(233, 40, 40);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: opacity 1s ease-in-out;
 }
 
 #gameDisplay {
@@ -98,41 +113,55 @@ main {
     top: 50%;
     left: -10px;
     width: calc(100% + 20px);
-    height: 4px; /* Espessura do traço */
-    background: black; /* Cor do traço */
+    height: 4px;
+    /* Espessura do traço */
+    background: black;
+    /* Cor do traço */
     transform: translateY(-50%);
 }
 
 .crossed-vertical-0::after {
     content: "";
     position: absolute;
-    top: -10px; /* Ajusta para cobrir toda a altura */
+    top: -10px;
+    /* Ajusta para cobrir toda a altura */
     left: 16%;
-    width: 4px; /* Espessura do traço agora na largura */
-    height: calc(100% + 20px); /* A altura agora cobre o elemento */
-    background: black; /* Cor do traço */
+    width: 4px;
+    /* Espessura do traço agora na largura */
+    height: calc(100% + 20px);
+    /* A altura agora cobre o elemento */
+    background: black;
+    /* Cor do traço */
     transform: translateX(-50%);
 }
 
 .crossed-vertical-3::after {
     content: "";
     position: absolute;
-    top: -10px; /* Ajusta para cobrir toda a altura */
+    top: -10px;
+    /* Ajusta para cobrir toda a altura */
     left: 50%;
-    width: 4px; /* Espessura do traço agora na largura */
-    height: calc(100% + 20px); /* A altura agora cobre o elemento */
-    background: black; /* Cor do traço */
+    width: 4px;
+    /* Espessura do traço agora na largura */
+    height: calc(100% + 20px);
+    /* A altura agora cobre o elemento */
+    background: black;
+    /* Cor do traço */
     transform: translateX(-50%);
 }
 
 .crossed-vertical-6::after {
     content: "";
     position: absolute;
-    top: -10px; /* Ajusta para cobrir toda a altura */
+    top: -10px;
+    /* Ajusta para cobrir toda a altura */
     left: 85%;
-    width: 4px; /* Espessura do traço agora na largura */
-    height: calc(100% + 20px); /* A altura agora cobre o elemento */
-    background: black; /* Cor do traço */
+    width: 4px;
+    /* Espessura do traço agora na largura */
+    height: calc(100% + 20px);
+    /* A altura agora cobre o elemento */
+    background: black;
+    /* Cor do traço */
     transform: translateX(-50%);
 }
 
@@ -210,15 +239,16 @@ main {
     align-items: center;
     width: 70%;
     height: 70%;
-    border: 10px solid black; /* Define a borda do círculo */
+    border: 10px solid black;
+    /* Define a borda do círculo */
     border-radius: 50%;
     margin: auto;
-    background-color: transparent; /* Garante que o centro fique vazio */
+    background-color: transparent;
+    /* Garante que o centro fique vazio */
 }
 
-
 .x::before {
-    content: "\2716"; 
+    content: "\2716";
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,11 +260,18 @@ main {
 }
 
 @keyframes confetti-fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 1; }
-  }
-  
-  .confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.confetti {
     position: fixed;
     top: -10px;
     width: 10px;
@@ -242,12 +279,22 @@ main {
     background-color: red;
     opacity: 1;
     animation: confetti-fall 2s linear;
-    transition: opacity 1s ease-out; /* Suaviza o desaparecimento */
-  }
-  
-  .confetti:nth-child(odd) { background-color: blue; }
-  .confetti:nth-child(even) { background-color: yellow; }
-  .confetti:nth-child(3n) { background-color: green; }
-  .confetti:nth-child(4n) { background-color: purple; }
-  
-    
+    transition: opacity 1s ease-out;
+    /* Suaviza o desaparecimento */
+}
+
+.confetti:nth-child(odd) {
+    background-color: blue;
+}
+
+.confetti:nth-child(even) {
+    background-color: yellow;
+}
+
+.confetti:nth-child(3n) {
+    background-color: green;
+}
+
+.confetti:nth-child(4n) {
+    background-color: purple;
+}
