@@ -53,6 +53,17 @@ main {
     background-color: #f0ffff;
 }
 
+#playersNames input:disabled {
+    font-weight: bold;
+    background-color: #A0E7E5;   /* fundo claro e neutro */
+    color: #055A5B;                 /* texto mais apagado */
+    border: 1px solid #A0E7E5;      /* borda discreta */
+    opacity: 0.8;                /* leve transparência */
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #startButton,
 #resetButton {
     margin-top: 25px;
@@ -276,11 +287,56 @@ main {
     top: -10px;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: hsl(calc(360 * var(--hue)), 100%, 50%);
+    animation: fall linear forwards;
     opacity: 1;
-    animation: confetti-fall 2s linear;
-    transition: opacity 1s ease-out;
-    /* Suaviza o desaparecimento */
+    z-index: 999;
+    --hue: calc(360 * random());
+    transition: opacity 1s ease;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.winner-text, .start-text {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 2px 2px 5px black;
+    z-index: 1000;
+    animation: shake 0.5s infinite;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(-50%, -50%) translateX(0);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) translateX(-5px);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) translateX(5px);
+    }
+
+    75% {
+        transform: translate(-50%, -50%) translateX(-5px);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translateX(0);
+    }
 }
 
 .confetti:nth-child(odd) {

@@ -56,7 +56,51 @@ function removeClickEvent(tdGameDisplay) {
   });
 }
 
+function displayStartText() {
+  const startText = document.createElement("div");
+  startText.textContent = "Started!";
+  startText.className = "start-text";
+
+  setTimeout(() => {
+    document.body.appendChild(startText);
+  }, 250);
+
+  // Aplicar fade-out após 3 segundos
+  setTimeout(() => {
+    startText.style.opacity = "0";
+  }, 2000);
+
+  // Remover o texto após o fade-out
+  setTimeout(() => {
+    startText.remove();
+  }, 3000);
+
+}
+
+function displayWinnerText() {
+  const winnerText = document.createElement("div");
+  winnerText.textContent = "Winner!";
+  winnerText.className = "winner-text";
+
+  setTimeout(() => {
+    document.body.appendChild(winnerText);
+  }, 250);
+
+  // Aplicar fade-out após 3 segundos
+  setTimeout(() => {
+    winnerText.style.opacity = "0";
+  }, 4000);
+
+  // Remover o texto após o fade-out
+  setTimeout(() => {
+    winnerText.remove();
+  }, 5000);
+
+}
+
 function launchConfetti() {
+
+  // Criar confetes
   for (let i = 0; i < 50; i++) {
     let confetti = document.createElement("div");
     confetti.className = "confetti";
@@ -64,15 +108,12 @@ function launchConfetti() {
     confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
     document.body.appendChild(confetti);
 
-    // Tempo total antes de iniciar o fade-out (queda + tempo extra)
     let fadeOutTime = parseFloat(confetti.style.animationDuration) * 1000 + 500;
 
-    // Após a queda, iniciar fade-out
     setTimeout(() => {
-      confetti.style.opacity = "0"; // Reduz opacidade suavemente
+      confetti.style.opacity = "0";
     }, fadeOutTime);
 
-    // Remover o confete após o fade-out terminar
     setTimeout(() => confetti.remove(), fadeOutTime + 1000);
   }
 }
@@ -87,9 +128,11 @@ function checkWinner(matrix, tdGameDisplay) {
 
       trGameDisplay[index].classList.add('crossed-horizontal')
 
+      displayWinnerText()
+      setTimeout(launchConfetti, 250);
       setTimeout(launchConfetti, 1000);
-      setTimeout(launchConfetti, 2000);
-      setTimeout(launchConfetti, 3000);
+      setTimeout(launchConfetti, 1750);
+      setTimeout(launchConfetti, 2450);
 
       console.log(`O vencedor é o: ${matrix[index][0]}`);
     }
@@ -107,9 +150,11 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index + 3].classList.add('crossed-vertical-0')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-0')
 
+        displayWinnerText()
+        setTimeout(launchConfetti, 250);
         setTimeout(launchConfetti, 1000);
-        setTimeout(launchConfetti, 2000);
-        setTimeout(launchConfetti, 3000);
+        setTimeout(launchConfetti, 1750);
+        setTimeout(launchConfetti, 2450);
       }
 
       if (index === 1) {
@@ -117,9 +162,11 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index + 3].classList.add('crossed-vertical-3')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-3')
 
+        displayWinnerText()
+        setTimeout(launchConfetti, 250);
         setTimeout(launchConfetti, 1000);
-        setTimeout(launchConfetti, 2000);
-        setTimeout(launchConfetti, 3000);
+        setTimeout(launchConfetti, 1750);
+        setTimeout(launchConfetti, 2450);
       }
 
       if (index === 2) {
@@ -127,9 +174,11 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index + 3].classList.add('crossed-vertical-6')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-6')
 
+        displayWinnerText()
+        setTimeout(launchConfetti, 250);
         setTimeout(launchConfetti, 1000);
-        setTimeout(launchConfetti, 2000);
-        setTimeout(launchConfetti, 3000);
+        setTimeout(launchConfetti, 1750);
+        setTimeout(launchConfetti, 2450);
       }
 
       console.log(`O vencedor é o: ${matrix[0][index]}`);
@@ -146,9 +195,11 @@ function checkWinner(matrix, tdGameDisplay) {
     tdGameDisplay[4].classList.add('crossed-primary-diagonal-4')
     tdGameDisplay[8].classList.add('crossed-primary-diagonal-8')
 
+    displayWinnerText()
+    setTimeout(launchConfetti, 250);
     setTimeout(launchConfetti, 1000);
-    setTimeout(launchConfetti, 2000);
-    setTimeout(launchConfetti, 3000);
+    setTimeout(launchConfetti, 1750);
+    setTimeout(launchConfetti, 2450);
 
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
@@ -163,9 +214,11 @@ function checkWinner(matrix, tdGameDisplay) {
     tdGameDisplay[4].classList.add('crossed-secondary-diagonal-4')
     tdGameDisplay[6].classList.add('crossed-secondary-diagonal-6')
 
+    displayWinnerText()
+    setTimeout(launchConfetti, 250);
     setTimeout(launchConfetti, 1000);
-    setTimeout(launchConfetti, 2000);
-    setTimeout(launchConfetti, 3000);
+    setTimeout(launchConfetti, 1750);
+    setTimeout(launchConfetti, 2450);
 
     console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
@@ -200,8 +253,16 @@ function resetEvent() {
   })
 }
 
+function inputsDisabled() {
+  const playersInput = document.querySelectorAll('input')
+  playersInput.forEach(function (input) {
+    input.setAttribute("disabled", "")
+  })
+}
+
 function execute(trGameDisplay, tdGameDisplay) {
-  let matrix = tableToMatrix(trGameDisplay)
+  const matrix = tableToMatrix(trGameDisplay)
+  inputsDisabled()
   resetEvent()
   clickEvent(tdGameDisplay)
   changeEvent(tdGameDisplay, matrix)
@@ -219,6 +280,7 @@ let alert = document.getElementById("alert");
 
 startButton.addEventListener('click', function () {
   if (player1.value !== '' && player2.value !== '') {
+    displayStartText()
     execute(trGameDisplay, tdGameDisplay)
   } else {
     alert.innerText = "Preencha os nomes dos players!";
