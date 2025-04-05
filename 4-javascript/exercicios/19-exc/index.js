@@ -253,8 +253,16 @@ function resetEvent() {
   })
 }
 
+function inputsDisabled() {
+  const playersInput = document.querySelectorAll('input')
+  playersInput.forEach(function (input) {
+    input.setAttribute("disabled", "")
+  })
+}
+
 function execute(trGameDisplay, tdGameDisplay) {
-  let matrix = tableToMatrix(trGameDisplay)
+  const matrix = tableToMatrix(trGameDisplay)
+  inputsDisabled()
   resetEvent()
   clickEvent(tdGameDisplay)
   changeEvent(tdGameDisplay, matrix)
