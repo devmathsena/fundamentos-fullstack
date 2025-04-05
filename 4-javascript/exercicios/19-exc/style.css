@@ -290,7 +290,7 @@ main {
     }
 }
 
-.winner-text {
+.winner-text, .start-text {
     position: fixed;
     top: 40%;
     left: 50%;
