@@ -56,6 +56,27 @@ function removeClickEvent(tdGameDisplay) {
   });
 }
 
+function displayStartText() {
+  const startText = document.createElement("div");
+  startText.textContent = "Started!";
+  startText.className = "start-text";
+
+  setTimeout(() => {
+    document.body.appendChild(startText);
+  }, 250);
+
+  // Aplicar fade-out após 3 segundos
+  setTimeout(() => {
+    startText.style.opacity = "0";
+  }, 2000);
+
+  // Remover o texto após o fade-out
+  setTimeout(() => {
+    startText.remove();
+  }, 3000);
+
+}
+
 function displayWinnerText() {
   const winnerText = document.createElement("div");
   winnerText.textContent = "Winner!";
@@ -96,7 +117,6 @@ function launchConfetti() {
     setTimeout(() => confetti.remove(), fadeOutTime + 1000);
   }
 }
-
 
 function checkWinner(matrix, tdGameDisplay) {
 
@@ -242,6 +262,7 @@ let alert = document.getElementById("alert");
 
 startButton.addEventListener('click', function () {
   if (player1.value !== '' && player2.value !== '') {
+    displayStartText()
     execute(trGameDisplay, tdGameDisplay)
   } else {
     alert.innerText = "Preencha os nomes dos players!";
