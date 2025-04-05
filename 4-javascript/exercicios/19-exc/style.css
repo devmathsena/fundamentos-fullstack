@@ -53,6 +53,17 @@ main {
     background-color: #f0ffff;
 }
 
+#playersNames input:disabled {
+    font-weight: bold;
+    background-color: #A0E7E5;   /* fundo claro e neutro */
+    color: #055A5B;                 /* texto mais apagado */
+    border: 1px solid #A0E7E5;      /* borda discreta */
+    opacity: 0.8;                /* leve transparência */
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 #startButton,
 #resetButton {
     margin-top: 25px;
