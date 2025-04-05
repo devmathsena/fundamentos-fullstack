@@ -150,9 +150,11 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index + 3].classList.add('crossed-vertical-0')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-0')
 
-        setTimeout(launchConfetti, 500);
+        displayWinnerText()
+        setTimeout(launchConfetti, 250);
         setTimeout(launchConfetti, 1000);
-        setTimeout(launchConfetti, 1500);
+        setTimeout(launchConfetti, 1750);
+        setTimeout(launchConfetti, 2450);
       }
 
       if (index === 1) {
@@ -160,9 +162,11 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index + 3].classList.add('crossed-vertical-3')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-3')
 
-        setTimeout(launchConfetti, 500);
+        displayWinnerText()
+        setTimeout(launchConfetti, 250);
         setTimeout(launchConfetti, 1000);
-        setTimeout(launchConfetti, 1500);
+        setTimeout(launchConfetti, 1750);
+        setTimeout(launchConfetti, 2450);
       }
 
       if (index === 2) {
@@ -170,9 +174,11 @@ function checkWinner(matrix, tdGameDisplay) {
         tdGameDisplay[index + 3].classList.add('crossed-vertical-6')
         tdGameDisplay[index + 6].classList.add('crossed-vertical-6')
 
-        setTimeout(launchConfetti, 500);
+        displayWinnerText()
+        setTimeout(launchConfetti, 250);
         setTimeout(launchConfetti, 1000);
-        setTimeout(launchConfetti, 1500);
+        setTimeout(launchConfetti, 1750);
+        setTimeout(launchConfetti, 2450);
       }
 
       console.log(`O vencedor é o: ${matrix[0][index]}`);
@@ -189,9 +195,11 @@ function checkWinner(matrix, tdGameDisplay) {
     tdGameDisplay[4].classList.add('crossed-primary-diagonal-4')
     tdGameDisplay[8].classList.add('crossed-primary-diagonal-8')
 
-    setTimeout(launchConfetti, 500);
+    displayWinnerText()
+    setTimeout(launchConfetti, 250);
     setTimeout(launchConfetti, 1000);
-    setTimeout(launchConfetti, 1500);
+    setTimeout(launchConfetti, 1750);
+    setTimeout(launchConfetti, 2450);
 
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
@@ -206,9 +214,11 @@ function checkWinner(matrix, tdGameDisplay) {
     tdGameDisplay[4].classList.add('crossed-secondary-diagonal-4')
     tdGameDisplay[6].classList.add('crossed-secondary-diagonal-6')
 
-    setTimeout(launchConfetti, 500);
+    displayWinnerText()
+    setTimeout(launchConfetti, 250);
     setTimeout(launchConfetti, 1000);
-    setTimeout(launchConfetti, 1500);
+    setTimeout(launchConfetti, 1750);
+    setTimeout(launchConfetti, 2450);
 
     console.log(`O vencedor é o: ${matrix[0][2]}`);
   }
