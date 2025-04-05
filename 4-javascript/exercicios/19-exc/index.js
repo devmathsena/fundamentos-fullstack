@@ -15,6 +15,7 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 
 function handleClickMatrix() {
   matrix = tableToMatrix(trGameDisplay);
+  checkTurn()
   checkWinner(matrix, tdGameDisplay)
 }
 
@@ -260,13 +261,27 @@ function inputsDisabled() {
   })
 }
 
+function checkTurn() {
+  // Remove o marcador de ambos os jogadores, caso exista
+  player1.value = player1.value.replace(" 👈", "");
+  player2.value = player2.value.replace(" 👈", "");
+
+  // Adiciona o marcador ao jogador da vez
+  if (piece === 'circle') {
+    player1.value += " 👈";
+  } else if (piece === 'x') {
+    player2.value += " 👈";
+  }
+}
+
+
 function execute(trGameDisplay, tdGameDisplay) {
   const matrix = tableToMatrix(trGameDisplay)
   inputsDisabled()
   resetEvent()
   clickEvent(tdGameDisplay)
   changeEvent(tdGameDisplay, matrix)
-
+  checkTurn()
 }
 
 let piece = 'circle'
