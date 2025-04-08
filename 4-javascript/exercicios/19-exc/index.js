@@ -134,7 +134,6 @@ function checkWinner(matrix, tdGameDisplay) {
     }
   }
 
-  // Verifica colunas
   for (let index = 0; index < 3; index++) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
 
@@ -181,7 +180,6 @@ function checkWinner(matrix, tdGameDisplay) {
     }
   }
 
-  // Verifica diagonal principal
   if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
 
     removeChangeEvent(tdGameDisplay)
@@ -200,7 +198,6 @@ function checkWinner(matrix, tdGameDisplay) {
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
 
-  // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
 
     removeChangeEvent(tdGameDisplay)
@@ -227,7 +224,6 @@ function checkWinner(matrix, tdGameDisplay) {
     console.log('Empate!');
   }
 
-  // Se ninguém ganhou
   return null;
 }
 
