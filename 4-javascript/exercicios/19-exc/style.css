@@ -301,7 +301,7 @@ main {
     }
 }
 
-.winner-text, .start-text {
+.winner-text, .start-text, .draw-text {
     position: fixed;
     top: 40%;
     left: 50%;

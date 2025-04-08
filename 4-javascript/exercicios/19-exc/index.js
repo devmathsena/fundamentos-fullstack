@@ -95,6 +95,25 @@ function displayWinnerText() {
 
 }
 
+function displayDrawText() {
+  const drawText = document.createElement("div");
+  drawText.textContent = "Deu velha!";
+  drawText.className = "draw-text";
+
+  setTimeout(() => {
+    document.body.appendChild(drawText);
+  }, 250);
+
+  setTimeout(() => {
+    drawText.style.opacity = "0";
+  }, 4000);
+
+  setTimeout(() => {
+    drawText.remove();
+  }, 5000);
+
+}
+
 function launchConfetti() {
 
   for (let i = 0; i < 50; i++) {
@@ -116,6 +135,8 @@ function launchConfetti() {
 
 function checkWinner(matrix, tdGameDisplay) {
 
+  let winner = false
+
   for (let index = 0; index < 3; index++) {
     if (matrix[index][0] !== "" && matrix[index][0] === matrix[index][1] && matrix[index][1] === matrix[index][2]) {
 
@@ -130,7 +151,8 @@ function checkWinner(matrix, tdGameDisplay) {
       setTimeout(launchConfetti, 1750);
       setTimeout(launchConfetti, 2450);
 
-      console.log(`O vencedor é o: ${matrix[index][0]}`);
+      setWinner(`${matrix[index][0]}`)
+      winner = true
     }
   }
 
@@ -176,7 +198,8 @@ function checkWinner(matrix, tdGameDisplay) {
         setTimeout(launchConfetti, 2450);
       }
 
-      console.log(`O vencedor é o: ${matrix[0][index]}`);
+      setWinner(`${matrix[0][index]}`)
+      winner = true
     }
   }
 
@@ -195,7 +218,8 @@ function checkWinner(matrix, tdGameDisplay) {
     setTimeout(launchConfetti, 1750);
     setTimeout(launchConfetti, 2450);
 
-    console.log(`O vencedor é o: ${matrix[0][0]}`);
+    setWinner(`${matrix[0][0]}`)
+    winner = true
   }
 
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
@@ -213,15 +237,15 @@ function checkWinner(matrix, tdGameDisplay) {
     setTimeout(launchConfetti, 1750);
     setTimeout(launchConfetti, 2450);
 
-    console.log(`O vencedor é o: ${matrix[0][2]}`);
+    setWinner(`${matrix[0][2]}`)
+    winner = true
   }
 
-  // CORRIGIR CONSIDERAÇÃO DE EMPATE - VITORIA COM TDS PEÇAS PREENCHIDAS INFORMA EMPATE TBM
   const draw = matrix.flat().every(celula => celula !== "");
-  if (draw) {
+  if (draw && winner === false) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
-    console.log('Empate!');
+    displayDrawText()
   }
 
   return null;
@@ -260,6 +284,17 @@ function checkTurn() {
     player1.value += " 👈";
   } else if (piece === 'x') {
     player2.value += " 👈";
+  }
+}
+
+function setWinner(winner) {
+  player1.value = player1.value.replace(" 👈", "");
+  player2.value = player2.value.replace(" 👈", "");
+
+  if (winner === 'circle') {
+    player1.value += " 🥇💯";
+  } else if (winner === 'x') {
+    player2.value += " 🥇💯";
   }
 }
 
