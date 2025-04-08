@@ -15,6 +15,7 @@ Você pode desenvolver com liberdade, da forma que preferir, mas o jogo precisa 
 
 function handleClickMatrix() {
   matrix = tableToMatrix(trGameDisplay);
+  checkTurn()
   checkWinner(matrix, tdGameDisplay)
 }
 
@@ -58,19 +59,17 @@ function removeClickEvent(tdGameDisplay) {
 
 function displayStartText() {
   const startText = document.createElement("div");
-  startText.textContent = "Started!";
+  startText.textContent = "Começou!";
   startText.className = "start-text";
 
   setTimeout(() => {
     document.body.appendChild(startText);
   }, 250);
 
-  // Aplicar fade-out após 3 segundos
   setTimeout(() => {
     startText.style.opacity = "0";
   }, 2000);
 
-  // Remover o texto após o fade-out
   setTimeout(() => {
     startText.remove();
   }, 3000);
@@ -79,19 +78,17 @@ function displayStartText() {
 
 function displayWinnerText() {
   const winnerText = document.createElement("div");
-  winnerText.textContent = "Winner!";
+  winnerText.textContent = "Vencedor!";
   winnerText.className = "winner-text";
 
   setTimeout(() => {
     document.body.appendChild(winnerText);
   }, 250);
 
-  // Aplicar fade-out após 3 segundos
   setTimeout(() => {
     winnerText.style.opacity = "0";
   }, 4000);
 
-  // Remover o texto após o fade-out
   setTimeout(() => {
     winnerText.remove();
   }, 5000);
@@ -100,7 +97,6 @@ function displayWinnerText() {
 
 function launchConfetti() {
 
-  // Criar confetes
   for (let i = 0; i < 50; i++) {
     let confetti = document.createElement("div");
     confetti.className = "confetti";
@@ -138,7 +134,6 @@ function checkWinner(matrix, tdGameDisplay) {
     }
   }
 
-  // Verifica colunas
   for (let index = 0; index < 3; index++) {
     if (matrix[0][index] !== "" && matrix[0][index] === matrix[1][index] && matrix[1][index] === matrix[2][index]) {
 
@@ -185,7 +180,6 @@ function checkWinner(matrix, tdGameDisplay) {
     }
   }
 
-  // Verifica diagonal principal
   if (matrix[0][0] !== "" && matrix[0][0] === matrix[1][1] && matrix[1][1] === matrix[2][2]) {
 
     removeChangeEvent(tdGameDisplay)
@@ -204,7 +198,6 @@ function checkWinner(matrix, tdGameDisplay) {
     console.log(`O vencedor é o: ${matrix[0][0]}`);
   }
 
-  // Verifica diagonal secundária
   if (matrix[0][2] !== "" && matrix[0][2] === matrix[1][1] && matrix[1][1] === matrix[2][0]) {
 
     removeChangeEvent(tdGameDisplay)
@@ -231,7 +224,6 @@ function checkWinner(matrix, tdGameDisplay) {
     console.log('Empate!');
   }
 
-  // Se ninguém ganhou
   return null;
 }
 
@@ -260,13 +252,25 @@ function inputsDisabled() {
   })
 }
 
+function checkTurn() {
+  player1.value = player1.value.replace(" 👈", "");
+  player2.value = player2.value.replace(" 👈", "");
+
+  if (piece === 'circle') {
+    player1.value += " 👈";
+  } else if (piece === 'x') {
+    player2.value += " 👈";
+  }
+}
+
+
 function execute(trGameDisplay, tdGameDisplay) {
   const matrix = tableToMatrix(trGameDisplay)
   inputsDisabled()
   resetEvent()
   clickEvent(tdGameDisplay)
   changeEvent(tdGameDisplay, matrix)
-
+  checkTurn()
 }
 
 let piece = 'circle'
@@ -287,14 +291,12 @@ startButton.addEventListener('click', function () {
     alert.style.display = "block";
     alert.style.opacity = "1";
 
-    // Esconde o alert suavemente após 3 segundos
     setTimeout(() => {
       alert.style.opacity = "0";
 
-      // Aguarda a transição do fade-out antes de esconder o elemento
       setTimeout(() => {
         alert.style.display = "none";
-      }, 1000); // Tempo igual ao do transition (1s)
+      }, 1000);
     }, 3000);
   }
 })
