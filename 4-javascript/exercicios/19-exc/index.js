@@ -85,12 +85,10 @@ function displayWinnerText() {
     document.body.appendChild(winnerText);
   }, 250);
 
-  // Aplicar fade-out após 3 segundos
   setTimeout(() => {
     winnerText.style.opacity = "0";
   }, 4000);
 
-  // Remover o texto após o fade-out
   setTimeout(() => {
     winnerText.remove();
   }, 5000);
