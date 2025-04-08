@@ -97,7 +97,6 @@ function displayWinnerText() {
 
 function launchConfetti() {
 
-  // Criar confetes
   for (let i = 0; i < 50; i++) {
     let confetti = document.createElement("div");
     confetti.className = "confetti";
