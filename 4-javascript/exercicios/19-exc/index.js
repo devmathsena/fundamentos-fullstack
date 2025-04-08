@@ -253,11 +253,9 @@ function inputsDisabled() {
 }
 
 function checkTurn() {
-  // Remove o marcador de ambos os jogadores, caso exista
   player1.value = player1.value.replace(" 👈", "");
   player2.value = player2.value.replace(" 👈", "");
 
-  // Adiciona o marcador ao jogador da vez
   if (piece === 'circle') {
     player1.value += " 👈";
   } else if (piece === 'x') {
