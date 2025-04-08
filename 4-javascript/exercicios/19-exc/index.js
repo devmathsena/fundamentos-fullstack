@@ -59,7 +59,7 @@ function removeClickEvent(tdGameDisplay) {
 
 function displayStartText() {
   const startText = document.createElement("div");
-  startText.textContent = "Started!";
+  startText.textContent = "Começou!";
   startText.className = "start-text";
 
   setTimeout(() => {
@@ -80,7 +80,7 @@ function displayStartText() {
 
 function displayWinnerText() {
   const winnerText = document.createElement("div");
-  winnerText.textContent = "Winner!";
+  winnerText.textContent = "Vencedor!";
   winnerText.className = "winner-text";
 
   setTimeout(() => {
