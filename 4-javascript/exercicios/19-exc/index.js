@@ -66,12 +66,10 @@ function displayStartText() {
     document.body.appendChild(startText);
   }, 250);
 
-  // Aplicar fade-out após 3 segundos
   setTimeout(() => {
     startText.style.opacity = "0";
   }, 2000);
 
-  // Remover o texto após o fade-out
   setTimeout(() => {
     startText.remove();
   }, 3000);
