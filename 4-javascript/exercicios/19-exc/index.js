@@ -291,14 +291,12 @@ startButton.addEventListener('click', function () {
     alert.style.display = "block";
     alert.style.opacity = "1";
 
-    // Esconde o alert suavemente após 3 segundos
     setTimeout(() => {
       alert.style.opacity = "0";
 
-      // Aguarda a transição do fade-out antes de esconder o elemento
       setTimeout(() => {
         alert.style.display = "none";
-      }, 1000); // Tempo igual ao do transition (1s)
+      }, 1000);
     }, 3000);
   }
 })
