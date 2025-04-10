@@ -143,8 +143,12 @@ function checkWinner(matrix, tdGameDisplay) {
       removeChangeEvent(tdGameDisplay)
       removeClickEvent(tdGameDisplay)
 
-      trGameDisplay[index].classList.add('crossed-horizontal')
+      let allTds = trGameDisplay[index].querySelectorAll('td')
 
+      allTds.forEach((td) => {
+        td.classList.add('marked')
+      })
+      
       displayWinnerText()
       setTimeout(launchConfetti, 250);
       setTimeout(launchConfetti, 1000);
@@ -163,9 +167,9 @@ function checkWinner(matrix, tdGameDisplay) {
       removeClickEvent(tdGameDisplay)
 
       if (index === 0) {
-        tdGameDisplay[index].classList.add('crossed-vertical-0')
-        tdGameDisplay[index + 3].classList.add('crossed-vertical-0')
-        tdGameDisplay[index + 6].classList.add('crossed-vertical-0')
+        tdGameDisplay[index].classList.add('marked')
+        tdGameDisplay[index + 3].classList.add('marked')
+        tdGameDisplay[index + 6].classList.add('marked')
 
         displayWinnerText()
         setTimeout(launchConfetti, 250);
@@ -175,9 +179,9 @@ function checkWinner(matrix, tdGameDisplay) {
       }
 
       if (index === 1) {
-        tdGameDisplay[index].classList.add('crossed-vertical-3')
-        tdGameDisplay[index + 3].classList.add('crossed-vertical-3')
-        tdGameDisplay[index + 6].classList.add('crossed-vertical-3')
+        tdGameDisplay[index].classList.add('marked')
+        tdGameDisplay[index + 3].classList.add('marked')
+        tdGameDisplay[index + 6].classList.add('marked')
 
         displayWinnerText()
         setTimeout(launchConfetti, 250);
@@ -187,9 +191,9 @@ function checkWinner(matrix, tdGameDisplay) {
       }
 
       if (index === 2) {
-        tdGameDisplay[index].classList.add('crossed-vertical-6')
-        tdGameDisplay[index + 3].classList.add('crossed-vertical-6')
-        tdGameDisplay[index + 6].classList.add('crossed-vertical-6')
+        tdGameDisplay[index].classList.add('marked')
+        tdGameDisplay[index + 3].classList.add('marked')
+        tdGameDisplay[index + 6].classList.add('marked')
 
         displayWinnerText()
         setTimeout(launchConfetti, 250);
@@ -208,9 +212,9 @@ function checkWinner(matrix, tdGameDisplay) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
 
-    tdGameDisplay[0].classList.add('crossed-primary-diagonal-0')
-    tdGameDisplay[4].classList.add('crossed-primary-diagonal-4')
-    tdGameDisplay[8].classList.add('crossed-primary-diagonal-8')
+    tdGameDisplay[0].classList.add('marked')
+    tdGameDisplay[4].classList.add('marked')
+    tdGameDisplay[8].classList.add('marked')
 
     displayWinnerText()
     setTimeout(launchConfetti, 250);
@@ -227,9 +231,9 @@ function checkWinner(matrix, tdGameDisplay) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
 
-    tdGameDisplay[2].classList.add('crossed-secondary-diagonal-2')
-    tdGameDisplay[4].classList.add('crossed-secondary-diagonal-4')
-    tdGameDisplay[6].classList.add('crossed-secondary-diagonal-6')
+    tdGameDisplay[2].classList.add('marked')
+    tdGameDisplay[4].classList.add('marked')
+    tdGameDisplay[6].classList.add('marked')
 
     displayWinnerText()
     setTimeout(launchConfetti, 250);
