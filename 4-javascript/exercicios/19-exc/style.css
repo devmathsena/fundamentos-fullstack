@@ -118,6 +118,10 @@ main {
     background-color: #007a7a;
 }
 
+.marked {
+    background-color: #005353 !important;
+}
+
 .circle::before {
     content: "";
     display: flex;
