@@ -118,21 +118,6 @@ main {
     background-color: #007a7a;
 }
 
-.crossed-vertical-3::after {
-    content: "";
-    position: absolute;
-    top: -10px;
-    /* Ajusta para cobrir toda a altura */
-    left: 50%;
-    width: 4px;
-    /* Espessura do traço agora na largura */
-    height: calc(100% + 20px);
-    /* A altura agora cobre o elemento */
-    background: black;
-    /* Cor do traço */
-    transform: translateX(-50%);
-}
-
 .crossed-vertical-6::after {
     content: "";
     position: absolute;
