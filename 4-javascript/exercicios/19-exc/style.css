@@ -15,12 +15,15 @@ body {
 
 main {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 5rem;
+    padding: 4rem;
     height: 40rem;
     column-gap: 4rem;
+    row-gap: 1rem;
+    height: 100vh;
 }
 
 #playersNames {
