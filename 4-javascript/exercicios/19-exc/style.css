@@ -118,17 +118,6 @@ main {
     background-color: #007a7a;
 }
 
-.crossed-secondary-diagonal-2::after {
-    content: "";
-    position: absolute;
-    top: -24%;
-    left: 84%;
-    width: 1%;
-    height: 162%;
-    background: black;
-    transform: rotate(45deg);
-}
-
 .crossed-secondary-diagonal-4::after {
     content: "";
     position: absolute;
