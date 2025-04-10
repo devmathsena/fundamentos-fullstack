@@ -118,18 +118,6 @@ main {
     background-color: #007a7a;
 }
 
-.crossed-secondary-diagonal-6::after {
-    content: "";
-    position: absolute;
-    top: -24%;
-    left: 14.8%;
-    width: 1%;
-    height: 162%;
-    background: black;
-    transform: rotate(45deg);
-}
-
-
 .circle::before {
     content: "";
     display: flex;
