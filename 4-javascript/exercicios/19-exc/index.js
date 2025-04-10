@@ -250,6 +250,14 @@ function checkWinner(matrix, tdGameDisplay) {
     removeChangeEvent(tdGameDisplay)
     removeClickEvent(tdGameDisplay)
     displayDrawText()
+    
+    trGameDisplay.forEach((tr) => {
+      let allTds = tr.querySelectorAll('td')
+
+      allTds.forEach((td) => {
+        td.classList.add('marked')
+      })
+    })
   }
 
   return null;
