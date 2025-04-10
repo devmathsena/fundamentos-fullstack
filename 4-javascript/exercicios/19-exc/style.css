@@ -118,16 +118,6 @@ main {
     background-color: #007a7a;
 }
 
-.crossed-primary-diagonal-0::after {
-    content: "";
-    position: absolute;
-    top: -24%;
-    left: 17%;
-    width: 1%;
-    height: 162%;
-    background: black;
-    transform: rotate(-45deg);
-}
 
 .crossed-primary-diagonal-4::after {
     content: "";
