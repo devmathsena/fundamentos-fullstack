@@ -23,7 +23,7 @@ A proposta foi reforçar conceitos como:
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla JS)
+- JavaScript
 
 ---
 
