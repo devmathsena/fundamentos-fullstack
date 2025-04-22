@@ -9,4 +9,9 @@ Essas funções devem mostrar o resultado de alguma forma em texto porém não �
 Para testar a função você pode fazer chamadas manuais a ela no javascript ou utilizar o console do navegador 
 (qualquer função incluída na página pode ser chamada diretamente no console).
 
+**Operações:**
+
+Média Aritmética Simples: Pode ser calculada somando todos os valores e dividindo o total da soma pela 
+quantidade de valores.
+
 */
