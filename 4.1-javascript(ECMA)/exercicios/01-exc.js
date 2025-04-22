@@ -19,4 +19,7 @@ valor informado, fazendo com que ele tenha um valor proporcionalmente diferente 
 Pode ser calculada somando as multiplicações dos valores pelos seus respectivos pesos e dividindo o total 
 pela soma dos pesos.
 
+Mediana: Pode ser calculada encontrando o valor central de uma sequência de números crescente ou decrescente. 
+Caso existam dois números centrais, a mediana é calculada através da média aritmética simples desses dois números.
+
 */
