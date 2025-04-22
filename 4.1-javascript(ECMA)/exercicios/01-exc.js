@@ -22,4 +22,5 @@ pela soma dos pesos.
 Mediana: Pode ser calculada encontrando o valor central de uma sequência de números crescente ou decrescente. 
 Caso existam dois números centrais, a mediana é calculada através da média aritmética simples desses dois números.
 
+Moda: Pode ser calculada encontrando o valor que mais se repete em um dado conjunto.
 */
