@@ -14,4 +14,9 @@ Para testar a função você pode fazer chamadas manuais a ela no javascript ou 
 Média Aritmética Simples: Pode ser calculada somando todos os valores e dividindo o total da soma pela 
 quantidade de valores.
 
+Média Aritmética Ponderada: Semelhante à média aritmética simples, porém é possível atribuir um peso a cada 
+valor informado, fazendo com que ele tenha um valor proporcionalmente diferente dos outros. 
+Pode ser calculada somando as multiplicações dos valores pelos seus respectivos pesos e dividindo o total 
+pela soma dos pesos.
+
 */
