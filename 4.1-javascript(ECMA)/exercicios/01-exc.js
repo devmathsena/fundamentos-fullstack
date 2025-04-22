@@ -32,6 +32,10 @@ function simpleArithmeticAverage(...nums) {
     return arithmeticAverage
 }
 
-function weightedArithmeticAverage() {
-
+function weightedArithmeticAverage(...nums) {
+    const sum = nums.reduce((accumulator, currentValue) => accumulator + currentValue.n * currentValue.p, 0)
+    const weight = nums.reduce((accumulator, currentValue) => accumulator + currentValue.p, 0)
+    const arithmeticAverage = sum / weight
+    
+    return arithmeticAverage
 }
