@@ -25,13 +25,13 @@ Caso existam dois números centrais, a mediana é calculada através da média a
 Moda: Pode ser calculada encontrando o valor que mais se repete em um dado conjunto.
 */
 
-function arithmeticAverage(...nums) {
+function simpleArithmeticAverage(...nums) {
     const sum = nums.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
     const arithmeticAverage = sum / nums.length
 
     return arithmeticAverage
 }
 
-function () {
+function weightedArithmeticAverage() {
 
 }
