@@ -55,3 +55,17 @@ function medianNum(...nums) {
 
     return median(nums, isOdd);
 }
+
+function mode(...nums) {
+    const count = new Map()
+
+    for(const item of nums) {
+        count.set(item, (count.get(item) || 0) +1)
+    }
+
+    const sortedByValue = [...count.entries()].sort((a, b) => b[1] - a[1])
+
+    const [[mode]] = sortedByValue
+
+    return mode
+}
