@@ -36,6 +36,22 @@ function weightedArithmeticAverage(...nums) {
     const sum = nums.reduce((accumulator, currentValue) => accumulator + currentValue.n * currentValue.p, 0)
     const weight = nums.reduce((accumulator, currentValue) => accumulator + currentValue.p, 0)
     const arithmeticAverage = sum / weight
-    
+
     return arithmeticAverage
+}
+
+function medianNum(...nums) {
+    nums.sort((a, b) => a - b);
+    const isOdd = nums.length % 2 !== 0;
+
+    const median = (nums, isOdd) => {
+        const mid = Math.floor(nums.length / 2);
+        if (isOdd) {
+            return nums[mid];
+        } else {
+            return (nums[mid - 1] + nums[mid]) / 2;
+        }
+    };
+
+    return median(nums, isOdd);
 }
