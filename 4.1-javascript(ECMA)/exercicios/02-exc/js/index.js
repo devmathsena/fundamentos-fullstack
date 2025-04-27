@@ -1,8 +1,7 @@
 import caculate from "./calculate.js"
 import copyToClipBoard from "./copyToClipBoard.js"
+import themeSwitcher from "./themeSwitcher.js"
 
-const main = document.querySelector('main')
-const root = document.querySelector(':root')
 const input = document.getElementById('input')
 const allowedKeys = ["(", ")", "/", "*", "-", "+", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "%", " "]
 
@@ -36,23 +35,4 @@ document.getElementById('equal').addEventListener('click', caculate)
 
 document.getElementById('copyToClipboard').addEventListener('click', copyToClipBoard)
 
-document.getElementById('themeSwitcher').addEventListener('click', function () {
-  const root = document.documentElement;
-  const main = document.querySelector('main');
-
-  if (main.dataset.theme === 'dark') {
-    root.style.setProperty('--bg-color', '#e0f7fa');
-    root.style.setProperty('--border-color', '#00c0ce');
-    root.style.setProperty('--font-color', '#00afa4');
-    root.style.setProperty('--primary-color', '#00afa4');
-    root.style.setProperty('--glow', '0 0 2px var(--primary-color), 0 0 5px var(--primary-color)');
-    main.dataset.theme = 'light';
-  } else {
-    root.style.setProperty('--bg-color', '#0a0f1e');
-    root.style.setProperty('--border-color', '#00eaff');
-    root.style.setProperty('--font-color', '#00eaff');
-    root.style.setProperty('--primary-color', '#00fff2');
-    root.style.setProperty('--glow', '0 0 2px var(--primary-color), 0 0 5px var(--primary-color)');
-    main.dataset.theme = 'dark';
-  }
-});
+document.getElementById('themeSwitcher').addEventListener('click', themeSwitcher);
