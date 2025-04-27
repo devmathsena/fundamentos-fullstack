@@ -1,4 +1,5 @@
 import caculate from "./calculate.js"
+import copyToClipBoard from "./copyToClipBoard.js"
 
 const main = document.querySelector('main')
 const root = document.querySelector(':root')
@@ -33,17 +34,7 @@ input.addEventListener('keydown', function (ev) {
 
 document.getElementById('equal').addEventListener('click', caculate)
 
-document.getElementById('copyToClipboard').addEventListener('click', function (ev) {
-  const button = ev.currentTarget;
-  if (button.innerText === 'COPY') {
-    button.innerText = 'Copied!'
-    button.classList.add('success')
-    navigator.clipboard.writeText(resultInput.value)
-  } else {
-    button.innerText = 'Copy'
-    button.classList.remove('success')
-  }
-})
+document.getElementById('copyToClipboard').addEventListener('click', copyToClipBoard)
 
 document.getElementById('themeSwitcher').addEventListener('click', function () {
   const root = document.documentElement;
