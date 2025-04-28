@@ -1,0 +1,27 @@
+{
+  "name": "datas-com-dayjs",
+  "version": "1.0.0",
+  "description": "Funções com datas utilizando npm e pacote dayjs",
+  "keywords": [
+    "npm",
+    "dayjs"
+  ],
+  "homepage": "https://github.com/devmathsena/fundamentos-fullstack/tree/main#readme",
+  "bugs": {
+    "url": "https://github.com/devmathsena/fundamentos-fullstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devmathsena/fundamentos-fullstack.git#main"
+  },
+  "license": "ISC",
+  "author": "Matheus Sena",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13"
+  }
+}
