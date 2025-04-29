@@ -10,11 +10,11 @@ function nextBirthday(birthdate) {
     const currentDate = dayjs()
 
     const nextBirthday = `${day}/${month+1}/${nextYear}`
-    const nextBirthdayzz = dayjs(nextBirthday, 'DD/M/YYYY')
-    const difference = currentDate.diff(nextBirthdayzz, 'day')
+    const nextBirthdayDayjs = dayjs(nextBirthday, 'DD/M/YYYY')
+    const difference = nextBirthdayDayjs.diff(currentDate, 'day')
     
     console.log(`Sua próxima data de aniversário: ${nextBirthday}`);
-    console.log(`Falta ${difference} para seu aniversário.`);
+    console.log(`Falta ${difference} dias para seu próximo aniversário.`);
 }
 
 nextBirthday("21/03/1998")
