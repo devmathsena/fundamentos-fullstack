@@ -1,20 +1,15 @@
-const dayjs = require('dayjs')
-const customParseFormat = require('dayjs/plugin/customParseFormat')
-dayjs.extend(customParseFormat)
+const dayjs = require("dayjs")
 
-function nextBirthday(birthdate) {
-    const birthdateFormated = dayjs(birthdate, 'DD/MM/YYYY')
-    const day = birthdateFormated.get('date')
-    const month = birthdateFormated.get('month')
-    const nextYear = dayjs().add(1, 'year').get('year')
-    const currentDate = dayjs()
+function birthday(date) {
+  const birthday = dayjs(date)
+  const today = dayjs()
+  const ageInYears = today.diff(birthday, 'year')
+  const nextBirthday = birthday.add(ageInYears + 1, 'year')
+  const daysToNextBirthday = nextBirthday.diff(today, 'day') + 1
 
-    const nextBirthday = `${day}/${month+1}/${nextYear}`
-    const nextBirthdayDayjs = dayjs(nextBirthday, 'DD/M/YYYY')
-    const difference = nextBirthdayDayjs.diff(currentDate, 'day')
-    
-    console.log(`Sua próxima data de aniversário: ${nextBirthday}`);
-    console.log(`Falta ${difference} dias para seu próximo aniversário.`);
+  console.log(`Idade: ${ageInYears}`)
+  console.log(`Próximo aniversário: ${nextBirthday.format('DD/MM/YYYY')}`)
+  console.log(`Dias até completar ${ageInYears + 1} anos: ${daysToNextBirthday}`)
 }
 
-nextBirthday("21/03/1998")
+birthday("1998-03-21")
