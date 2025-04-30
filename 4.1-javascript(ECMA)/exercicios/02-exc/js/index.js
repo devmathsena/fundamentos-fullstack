@@ -1,3 +1,7 @@
+/**
+ * Neste exercício o intuito é modularizar o exercício anterior utilizando ES Modules.
+ */
+
 import caculate from "./calculate.js"
 import copyToClipBoard from "./copyToClipBoard.js"
 import themeSwitcher from "./themeSwitcher.js"
