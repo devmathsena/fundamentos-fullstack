@@ -1,3 +1,7 @@
+/**
+ * Neste exercício o intuito é utilizar NPM e importar uma biblioteca externa pela primeira vez.
+ */
+
 const dayjs = require("dayjs")
 
 function birthday(date) {
