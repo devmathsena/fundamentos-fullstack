@@ -8,6 +8,6 @@ module.exports = {
     mode: 'development',
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: 'bundle.[name].min.js'
+        filename: '[name].bundle.min.js'
     }
 }
