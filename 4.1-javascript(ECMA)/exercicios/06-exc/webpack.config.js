@@ -6,6 +6,7 @@ module.exports = {
     },
     mode: 'development',
     output: {
-        path: path.resolve(__dirname, 'public')
+        path: path.resolve(__dirname, 'public'),
+        filename: 'bundle.min.js'
     }
 }
