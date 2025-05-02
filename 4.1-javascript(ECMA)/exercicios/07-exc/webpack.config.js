@@ -2,5 +2,10 @@ module.exports = {
     entry: {
         index: './src/index.js'
     },
-    mode: 'development'
+    mode: 'development',
+    module: {
+        rules: [{
+            test: /\.css$/
+        }]
+    }
 }
