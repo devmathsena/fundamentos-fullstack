@@ -1,13 +1,15 @@
-const Author = require("./Author");
 const Comment = require("./Comment");
 
 class Post {
-    constructor(authorsName) {
-        this.author = new Author(authorsName);
+    constructor(title, body, author) {
+        this.title = title;
+        this.body = body;
+        this.author = author;
         this.comments = [];
+        this.createdAt = new Date();
     }
-    saveComment(comment) {
-        this.comments.push(new Comment(comment));
+    addComment(username, comment) {
+        this.comments.push(new Comment(username, comment));
     }
 }
 
